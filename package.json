@@ -123,6 +123,7 @@
     "waf"
   ],
   "scripts": {
+    "build": "node dist-tools/browser-builder.js all > aws-sdk-full.js",
     "test": "node ./scripts/composite-test.js",
     "unit": "mocha -- $npm_package_config_test_args",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --reporter=lcovonly -- $npm_package_config_test_args",
