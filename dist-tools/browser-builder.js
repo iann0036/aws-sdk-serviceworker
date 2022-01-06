@@ -8,7 +8,8 @@ var license = [
   '// AWS SDK for JavaScript v' + AWS.VERSION,
   '// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.',
   '// Modifications Copyright Ian Mckay (@iann0036).',
-  '// License at https://sdk.amazonaws.com/js/BUNDLE_LICENSE.txt'
+  '// License at https://sdk.amazonaws.com/js/BUNDLE_LICENSE.txt',
+  'if(!window){var window = {}};'
 ].join('\n') + '\n';
 
 function minify(code) {
