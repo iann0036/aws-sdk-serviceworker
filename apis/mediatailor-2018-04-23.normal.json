@@ -817,7 +817,7 @@
           "shape": "__timestampUnix"
         },
         "FillerSlate": {
-          "documentation": "<p>Contains information about the slate used to fill gaps between programs in the schedule. You must configure FillerSlate if your channel uses an LINEAR PlaybackMode.</p>",
+          "documentation": "<p>The slate used to fill gaps between programs in the schedule. You must configure filler slate if your channel uses the LINEAR PlaybackMode. MediaTailor doesn't support filler slate for channels using the LOOP PlaybackMode.</p>",
           "shape": "SlateSource"
         },
         "LastModifiedTime": {
@@ -918,7 +918,7 @@
           "shape": "__string"
         },
         "FillerSlate": {
-          "documentation": "<p>The slate used to fill gaps between programs in the schedule. You must configure filler slate if your channel uses a LINEAR PlaybackMode.</p>",
+          "documentation": "<p>The slate used to fill gaps between programs in the schedule. You must configure filler slate if your channel uses the LINEAR PlaybackMode. MediaTailor doesn't support filler slate for channels using the LOOP PlaybackMode.</p>",
           "shape": "SlateSource"
         },
         "Outputs": {
@@ -1014,8 +1014,8 @@
       "required": [
         "Name",
         "PlaybackConfigurationName",
-        "Consumption",
-        "Retrieval"
+        "Retrieval",
+        "Consumption"
       ],
       "type": "structure"
     },
@@ -1083,8 +1083,8 @@
         "ChannelName",
         "ProgramName",
         "VodSourceName",
-        "ScheduleConfiguration",
-        "SourceLocationName"
+        "SourceLocationName",
+        "ScheduleConfiguration"
       ],
       "type": "structure"
     },
@@ -1139,6 +1139,9 @@
           "documentation": "<p>The source's HTTP package configurations.</p>",
           "shape": "HttpConfiguration"
         },
+        "SegmentDeliveryConfigurations": {
+          "shape": "__listOfSegmentDeliveryConfiguration"
+        },
         "SourceLocationName": {
           "documentation": "<p>The identifier for the source location you are working on.</p>",
           "location": "uri",
@@ -1182,6 +1185,9 @@
         "LastModifiedTime": {
           "documentation": "<p>The timestamp that indicates when the source location was last modified.</p>",
           "shape": "__timestampUnix"
+        },
+        "SegmentDeliveryConfigurations": {
+          "shape": "__listOfSegmentDeliveryConfiguration"
         },
         "SourceLocationName": {
           "documentation": "<p>The name of the source location.</p>",
@@ -1624,6 +1630,9 @@
         "LastModifiedTime": {
           "documentation": "<p>The timestamp that indicates when the source location was last modified.</p>",
           "shape": "__timestampUnix"
+        },
+        "SegmentDeliveryConfigurations": {
+          "shape": "__listOfSegmentDeliveryConfiguration"
         },
         "SourceLocationName": {
           "documentation": "<p>The name of the source location.</p>",
@@ -2758,8 +2767,8 @@
       },
       "required": [
         "VodSourceName",
-        "ChannelName",
         "SourceLocationName",
+        "ChannelName",
         "Arn",
         "ProgramName"
       ],
@@ -2785,6 +2794,17 @@
         },
         "SecretStringKey": {
           "documentation": "<p>The AWS Secrets Manager <a href=\"https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_CreateSecret.html#SecretsManager-CreateSecret-request-SecretString.html\">SecretString</a> key associated with the access token. MediaTailor uses the key to look up SecretString key and value pair containing the access token.</p>",
+          "shape": "__string"
+        }
+      },
+      "type": "structure"
+    },
+    "SegmentDeliveryConfiguration": {
+      "members": {
+        "BaseUrl": {
+          "shape": "__string"
+        },
+        "Name": {
           "shape": "__string"
         }
       },
@@ -2830,6 +2850,9 @@
         "LastModifiedTime": {
           "documentation": "<p>The timestamp that indicates when the source location was last modified.</p>",
           "shape": "__timestampUnix"
+        },
+        "SegmentDeliveryConfigurations": {
+          "shape": "__listOfSegmentDeliveryConfiguration"
         },
         "SourceLocationName": {
           "documentation": "<p>The name of the source location.</p>",
@@ -2988,6 +3011,10 @@
           "locationName": "channelName",
           "shape": "__string"
         },
+        "FillerSlate": {
+          "documentation": "<p>The slate used to fill gaps between programs in the schedule. You must configure filler slate if your channel uses the LINEAR PlaybackMode. MediaTailor doesn't support filler slate for channels using the LOOP PlaybackMode.</p>",
+          "shape": "SlateSource"
+        },
         "Outputs": {
           "documentation": "<p>The channel's output properties.</p>",
           "shape": "RequestOutputs"
@@ -3055,6 +3082,9 @@
           "documentation": "<p>The HTTP configuration for the source location.</p>",
           "shape": "HttpConfiguration"
         },
+        "SegmentDeliveryConfigurations": {
+          "shape": "__listOfSegmentDeliveryConfiguration"
+        },
         "SourceLocationName": {
           "documentation": "<p>The identifier for the source location you are working on.</p>",
           "location": "uri",
@@ -3093,6 +3123,9 @@
         "LastModifiedTime": {
           "documentation": "<p>The timestamp that indicates when the source location was last modified.</p>",
           "shape": "__timestampUnix"
+        },
+        "SegmentDeliveryConfigurations": {
+          "shape": "__listOfSegmentDeliveryConfiguration"
         },
         "SourceLocationName": {
           "documentation": "<p>The name of the source location.</p>",
@@ -3267,6 +3300,12 @@
     "__listOfScheduleEntry": {
       "member": {
         "shape": "ScheduleEntry"
+      },
+      "type": "list"
+    },
+    "__listOfSegmentDeliveryConfiguration": {
+      "member": {
+        "shape": "SegmentDeliveryConfiguration"
       },
       "type": "list"
     },

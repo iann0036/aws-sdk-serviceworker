@@ -298,3 +298,5 @@ export import BackupGateway = require('./backupgateway');
 export import IoTTwinMaker = require('./iottwinmaker');
 export import WorkSpacesWeb = require('./workspacesweb');
 export import AmplifyUIBuilder = require('./amplifyuibuilder');
+export import Keyspaces = require('./keyspaces');
+export import Billingconductor = require('./billingconductor');

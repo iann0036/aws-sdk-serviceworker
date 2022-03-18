@@ -132,6 +132,14 @@ declare class WAFV2 extends Service {
    */
   disassociateWebACL(callback?: (err: AWSError, data: WAFV2.Types.DisassociateWebACLResponse) => void): Request<WAFV2.Types.DisassociateWebACLResponse, AWSError>;
   /**
+   * Generates a presigned download URL for the specified release of the mobile SDK. The mobile SDK is not generally available. Customers who have access to the mobile SDK can use it to establish and manage Security Token Service (STS) security tokens for use in HTTP(S) requests from a mobile device to WAF. For more information, see WAF client application integration in the WAF Developer Guide.
+   */
+  generateMobileSdkReleaseUrl(params: WAFV2.Types.GenerateMobileSdkReleaseUrlRequest, callback?: (err: AWSError, data: WAFV2.Types.GenerateMobileSdkReleaseUrlResponse) => void): Request<WAFV2.Types.GenerateMobileSdkReleaseUrlResponse, AWSError>;
+  /**
+   * Generates a presigned download URL for the specified release of the mobile SDK. The mobile SDK is not generally available. Customers who have access to the mobile SDK can use it to establish and manage Security Token Service (STS) security tokens for use in HTTP(S) requests from a mobile device to WAF. For more information, see WAF client application integration in the WAF Developer Guide.
+   */
+  generateMobileSdkReleaseUrl(callback?: (err: AWSError, data: WAFV2.Types.GenerateMobileSdkReleaseUrlResponse) => void): Request<WAFV2.Types.GenerateMobileSdkReleaseUrlResponse, AWSError>;
+  /**
    * Retrieves the specified IPSet.
    */
   getIPSet(params: WAFV2.Types.GetIPSetRequest, callback?: (err: AWSError, data: WAFV2.Types.GetIPSetResponse) => void): Request<WAFV2.Types.GetIPSetResponse, AWSError>;
@@ -155,6 +163,14 @@ declare class WAFV2 extends Service {
    * Retrieves the specified managed rule set.   This is intended for use only by vendors of managed rule sets. Vendors are Amazon Web Services and Amazon Web Services Marketplace sellers.  Vendors, you can use the managed rule set APIs to provide controlled rollout of your versioned managed rule group offerings for your customers. The APIs are ListManagedRuleSets, GetManagedRuleSet, PutManagedRuleSetVersions, and UpdateManagedRuleSetVersionExpiryDate. 
    */
   getManagedRuleSet(callback?: (err: AWSError, data: WAFV2.Types.GetManagedRuleSetResponse) => void): Request<WAFV2.Types.GetManagedRuleSetResponse, AWSError>;
+  /**
+   * Retrieves information for the specified mobile SDK release, including release notes and tags. The mobile SDK is not generally available. Customers who have access to the mobile SDK can use it to establish and manage Security Token Service (STS) security tokens for use in HTTP(S) requests from a mobile device to WAF. For more information, see WAF client application integration in the WAF Developer Guide.
+   */
+  getMobileSdkRelease(params: WAFV2.Types.GetMobileSdkReleaseRequest, callback?: (err: AWSError, data: WAFV2.Types.GetMobileSdkReleaseResponse) => void): Request<WAFV2.Types.GetMobileSdkReleaseResponse, AWSError>;
+  /**
+   * Retrieves information for the specified mobile SDK release, including release notes and tags. The mobile SDK is not generally available. Customers who have access to the mobile SDK can use it to establish and manage Security Token Service (STS) security tokens for use in HTTP(S) requests from a mobile device to WAF. For more information, see WAF client application integration in the WAF Developer Guide.
+   */
+  getMobileSdkRelease(callback?: (err: AWSError, data: WAFV2.Types.GetMobileSdkReleaseResponse) => void): Request<WAFV2.Types.GetMobileSdkReleaseResponse, AWSError>;
   /**
    * Returns the IAM policy that is attached to the specified rule group. You must be the owner of the rule group to perform this operation.
    */
@@ -252,6 +268,14 @@ declare class WAFV2 extends Service {
    */
   listManagedRuleSets(callback?: (err: AWSError, data: WAFV2.Types.ListManagedRuleSetsResponse) => void): Request<WAFV2.Types.ListManagedRuleSetsResponse, AWSError>;
   /**
+   * Retrieves a list of the available releases for the mobile SDK and the specified device platform.  The mobile SDK is not generally available. Customers who have access to the mobile SDK can use it to establish and manage Security Token Service (STS) security tokens for use in HTTP(S) requests from a mobile device to WAF. For more information, see WAF client application integration in the WAF Developer Guide.
+   */
+  listMobileSdkReleases(params: WAFV2.Types.ListMobileSdkReleasesRequest, callback?: (err: AWSError, data: WAFV2.Types.ListMobileSdkReleasesResponse) => void): Request<WAFV2.Types.ListMobileSdkReleasesResponse, AWSError>;
+  /**
+   * Retrieves a list of the available releases for the mobile SDK and the specified device platform.  The mobile SDK is not generally available. Customers who have access to the mobile SDK can use it to establish and manage Security Token Service (STS) security tokens for use in HTTP(S) requests from a mobile device to WAF. For more information, see WAF client application integration in the WAF Developer Guide.
+   */
+  listMobileSdkReleases(callback?: (err: AWSError, data: WAFV2.Types.ListMobileSdkReleasesResponse) => void): Request<WAFV2.Types.ListMobileSdkReleasesResponse, AWSError>;
+  /**
    * Retrieves an array of RegexPatternSetSummary objects for the regex pattern sets that you manage.
    */
   listRegexPatternSets(params: WAFV2.Types.ListRegexPatternSetsRequest, callback?: (err: AWSError, data: WAFV2.Types.ListRegexPatternSetsResponse) => void): Request<WAFV2.Types.ListRegexPatternSetsResponse, AWSError>;
@@ -292,11 +316,11 @@ declare class WAFV2 extends Service {
    */
   listWebACLs(callback?: (err: AWSError, data: WAFV2.Types.ListWebACLsResponse) => void): Request<WAFV2.Types.ListWebACLsResponse, AWSError>;
   /**
-   * Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided. You can access information about all traffic that WAF inspects using the following steps:   Create your logging destination. You can use an Amazon CloudWatch Logs log group, an Amazon Simple Storage Service (Amazon S3) bucket, or an Amazon Kinesis Data Firehose. For information about configuring logging destinations and the permissions that are required for each, see Logging web ACL traffic information in the WAF Developer Guide.   Associate your logging destination to your web ACL using a PutLoggingConfiguration request.   When you successfully enable logging using a PutLoggingConfiguration request, WAF creates an additional role or policy that is required to write logs to the logging destination. For an Amazon CloudWatch Logs log group, WAF creates a resource policy on the log group. For an Amazon S3 bucket, WAF creates a bucket policy. For an Amazon Kinesis Data Firehose, WAF creates a service-linked role.  This operation completely replaces the mutable specifications that you already have for the logging configuration with the ones that you provide to this call. To modify the logging configuration, retrieve it by calling GetLoggingConfiguration, update the settings as needed, and then provide the complete logging configuration specification to this call. 
+   * Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided.   You can define one logging destination per web ACL.  You can access information about the traffic that WAF inspects using the following steps:   Create your logging destination. You can use an Amazon CloudWatch Logs log group, an Amazon Simple Storage Service (Amazon S3) bucket, or an Amazon Kinesis Data Firehose. For information about configuring logging destinations and the permissions that are required for each, see Logging web ACL traffic information in the WAF Developer Guide.   Associate your logging destination to your web ACL using a PutLoggingConfiguration request.   When you successfully enable logging using a PutLoggingConfiguration request, WAF creates an additional role or policy that is required to write logs to the logging destination. For an Amazon CloudWatch Logs log group, WAF creates a resource policy on the log group. For an Amazon S3 bucket, WAF creates a bucket policy. For an Amazon Kinesis Data Firehose, WAF creates a service-linked role. For additional information about web ACL logging, see Logging web ACL traffic information in the WAF Developer Guide.  This operation completely replaces the mutable specifications that you already have for the logging configuration with the ones that you provide to this call. To modify the logging configuration, retrieve it by calling GetLoggingConfiguration, update the settings as needed, and then provide the complete logging configuration specification to this call. 
    */
   putLoggingConfiguration(params: WAFV2.Types.PutLoggingConfigurationRequest, callback?: (err: AWSError, data: WAFV2.Types.PutLoggingConfigurationResponse) => void): Request<WAFV2.Types.PutLoggingConfigurationResponse, AWSError>;
   /**
-   * Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided. You can access information about all traffic that WAF inspects using the following steps:   Create your logging destination. You can use an Amazon CloudWatch Logs log group, an Amazon Simple Storage Service (Amazon S3) bucket, or an Amazon Kinesis Data Firehose. For information about configuring logging destinations and the permissions that are required for each, see Logging web ACL traffic information in the WAF Developer Guide.   Associate your logging destination to your web ACL using a PutLoggingConfiguration request.   When you successfully enable logging using a PutLoggingConfiguration request, WAF creates an additional role or policy that is required to write logs to the logging destination. For an Amazon CloudWatch Logs log group, WAF creates a resource policy on the log group. For an Amazon S3 bucket, WAF creates a bucket policy. For an Amazon Kinesis Data Firehose, WAF creates a service-linked role.  This operation completely replaces the mutable specifications that you already have for the logging configuration with the ones that you provide to this call. To modify the logging configuration, retrieve it by calling GetLoggingConfiguration, update the settings as needed, and then provide the complete logging configuration specification to this call. 
+   * Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided.   You can define one logging destination per web ACL.  You can access information about the traffic that WAF inspects using the following steps:   Create your logging destination. You can use an Amazon CloudWatch Logs log group, an Amazon Simple Storage Service (Amazon S3) bucket, or an Amazon Kinesis Data Firehose. For information about configuring logging destinations and the permissions that are required for each, see Logging web ACL traffic information in the WAF Developer Guide.   Associate your logging destination to your web ACL using a PutLoggingConfiguration request.   When you successfully enable logging using a PutLoggingConfiguration request, WAF creates an additional role or policy that is required to write logs to the logging destination. For an Amazon CloudWatch Logs log group, WAF creates a resource policy on the log group. For an Amazon S3 bucket, WAF creates a bucket policy. For an Amazon Kinesis Data Firehose, WAF creates a service-linked role. For additional information about web ACL logging, see Logging web ACL traffic information in the WAF Developer Guide.  This operation completely replaces the mutable specifications that you already have for the logging configuration with the ones that you provide to this call. To modify the logging configuration, retrieve it by calling GetLoggingConfiguration, update the settings as needed, and then provide the complete logging configuration specification to this call. 
    */
   putLoggingConfiguration(callback?: (err: AWSError, data: WAFV2.Types.PutLoggingConfigurationResponse) => void): Request<WAFV2.Types.PutLoggingConfigurationResponse, AWSError>;
   /**
@@ -520,7 +544,7 @@ declare namespace WAFV2 {
      */
     IPAddressVersion: IPAddressVersion;
     /**
-     * Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.  Examples:    To configure WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.   To configure WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify 192.0.2.0/24.   To configure WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.   To configure WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.   For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
+     * Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.  Example address strings:    To configure WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.   To configure WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify 192.0.2.0/24.   To configure WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.   To configure WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.   For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing. Example JSON Addresses specifications:    Empty array: "Addresses": []    Array with one address: "Addresses": ["192.0.2.44/32"]    Array with three addresses: "Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]    INVALID specification: "Addresses": [""] INVALID   
      */
     Addresses: IPAddresses;
     /**
@@ -868,6 +892,7 @@ declare namespace WAFV2 {
   }
   export interface DisassociateWebACLResponse {
   }
+  export type DownloadUrl = string;
   export type EntityDescription = string;
   export type EntityId = string;
   export type EntityName = string;
@@ -880,6 +905,7 @@ declare namespace WAFV2 {
   export type ExcludedRules = ExcludedRule[];
   export type FailureReason = "TOKEN_MISSING"|"TOKEN_EXPIRED"|string;
   export type FallbackBehavior = "MATCH"|"NO_MATCH"|string;
+  export type FieldIdentifier = string;
   export interface FieldToMatch {
     /**
      * Inspect a single header. Provide the name of the header to inspect, for example, User-Agent or Referer. This setting isn't case sensitive. Example JSON: "SingleHeader": { "Name": "haystack" } 
@@ -977,6 +1003,22 @@ declare namespace WAFV2 {
   }
   export type ForwardedIPHeaderName = string;
   export type ForwardedIPPosition = "FIRST"|"LAST"|"ANY"|string;
+  export interface GenerateMobileSdkReleaseUrlRequest {
+    /**
+     * The device platform.
+     */
+    Platform: Platform;
+    /**
+     * The release version. For the latest available version, specify LATEST.
+     */
+    ReleaseVersion: VersionKeyString;
+  }
+  export interface GenerateMobileSdkReleaseUrlResponse {
+    /**
+     * The presigned download URL for the specified SDK release.
+     */
+    Url?: DownloadUrl;
+  }
   export interface GeoMatchStatement {
     /**
      * An array of two-character country codes, for example, [ "US", "CN" ], from the alpha-2 country ISO codes of the ISO 3166 international standard. 
@@ -1046,6 +1088,22 @@ declare namespace WAFV2 {
      * A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation. 
      */
     LockToken?: LockToken;
+  }
+  export interface GetMobileSdkReleaseRequest {
+    /**
+     * The device platform.
+     */
+    Platform: Platform;
+    /**
+     * The release version. For the latest available version, specify LATEST.
+     */
+    ReleaseVersion: VersionKeyString;
+  }
+  export interface GetMobileSdkReleaseResponse {
+    /**
+     * Information for a specified SDK release, including release notes and tags.
+     */
+    MobileSdkRelease?: MobileSdkRelease;
   }
   export interface GetPermissionPolicyRequest {
     /**
@@ -1214,6 +1272,10 @@ declare namespace WAFV2 {
      * A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation. 
      */
     LockToken?: LockToken;
+    /**
+     * The URL to use in SDK integrations with Amazon Web Services managed rule groups. For example, you can use the integration SDKs with the account takeover prevention managed rule group AWSManagedRulesATPRuleSet. This is only populated if you are using a rule group in your web ACL that integrates with your applications in this way. For more information, see WAF client application integration in the WAF Developer Guide.
+     */
+    ApplicationIntegrationURL?: OutputUrl;
   }
   export interface HTTPHeader {
     /**
@@ -1281,7 +1343,7 @@ declare namespace WAFV2 {
      */
     IPAddressVersion: IPAddressVersion;
     /**
-     * Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.  Examples:    To configure WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.   To configure WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify 192.0.2.0/24.   To configure WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.   To configure WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.   For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
+     * Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.  Example address strings:    To configure WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.   To configure WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify 192.0.2.0/24.   To configure WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.   To configure WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.   For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing. Example JSON Addresses specifications:    Empty array: "Addresses": []    Array with one address: "Addresses": ["192.0.2.44/32"]    Array with three addresses: "Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]    INVALID specification: "Addresses": [""] INVALID   
      */
     Addresses: IPAddresses;
   }
@@ -1528,6 +1590,30 @@ declare namespace WAFV2 {
     ManagedRuleSets?: ManagedRuleSetSummaries;
   }
   export type ListMaxItems = number;
+  export interface ListMobileSdkReleasesRequest {
+    /**
+     * The device platform to retrieve the list for.
+     */
+    Platform: Platform;
+    /**
+     * When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+     */
+    NextMarker?: NextMarker;
+    /**
+     * The maximum number of objects that you want WAF to return for this request. If more objects are available, in the response, WAF provides a NextMarker value that you can use in a subsequent call to get the next batch of objects.
+     */
+    Limit?: PaginationLimit;
+  }
+  export interface ListMobileSdkReleasesResponse {
+    /**
+     * High level information for the available SDK releases. 
+     */
+    ReleaseSummaries?: ReleaseSummaries;
+    /**
+     * When you request a list of objects with a Limit setting, if the number of objects that are still available for retrieval exceeds the limit, WAF returns a NextMarker value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.
+     */
+    NextMarker?: NextMarker;
+  }
   export interface ListRegexPatternSetsRequest {
     /**
      * Specifies whether this is for an Amazon CloudFront distribution or for a regional application. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, or an AppSync GraphQL API.  To work with CloudFront, you must also specify the Region US East (N. Virginia) as follows:    CLI - Specify the Region when you use the CloudFront scope: --scope=CLOUDFRONT --region=us-east-1.    API and SDKs - For all calls, use the Region endpoint us-east-1.   
@@ -1648,7 +1734,7 @@ declare namespace WAFV2 {
      */
     ResourceArn: ResourceArn;
     /**
-     * The Amazon Resource Names (ARNs) of the logging destinations that you want to associate with the web ACL.
+     * The logging destination configuration that you want to associate with the web ACL.  You can associate one logging destination to a web ACL. 
      */
     LogDestinationConfigs: LogDestinationConfigs;
     /**
@@ -1675,6 +1761,26 @@ declare namespace WAFV2 {
      */
     DefaultBehavior: FilterBehavior;
   }
+  export type LoginPathString = string;
+  export interface ManagedRuleGroupConfig {
+    /**
+     * The path of the login endpoint for your application. For example, for the URL https://example.com/web/login, you would provide the path /web/login.
+     */
+    LoginPath?: LoginPathString;
+    /**
+     * The payload type for your login endpoint, either JSON or form encoded.
+     */
+    PayloadType?: PayloadType;
+    /**
+     * Details about your login page username field. 
+     */
+    UsernameField?: UsernameField;
+    /**
+     * Details about your login page password field. 
+     */
+    PasswordField?: PasswordField;
+  }
+  export type ManagedRuleGroupConfigs = ManagedRuleGroupConfig[];
   export interface ManagedRuleGroupStatement {
     /**
      * The name of the managed rule group vendor. You use this, along with the rule group name, to identify the rule group.
@@ -1696,6 +1802,10 @@ declare namespace WAFV2 {
      * An optional nested statement that narrows the scope of the web requests that are evaluated by the managed rule group. Requests are only evaluated by the rule group if they match the scope-down statement. You can use any nestable Statement in the scope-down statement, and you can nest statements at any level, the same as you can for a rule statement. 
      */
     ScopeDownStatement?: Statement;
+    /**
+     * Additional information that's used by a managed rule group. Most managed rule groups don't require this. Use this for the account takeover prevention managed rule group AWSManagedRulesATPRuleSet, to provide information about the sign-in page of your application. 
+     */
+    ManagedRuleGroupConfigs?: ManagedRuleGroupConfigs;
   }
   export type ManagedRuleGroupSummaries = ManagedRuleGroupSummary[];
   export interface ManagedRuleGroupSummary {
@@ -1809,6 +1919,24 @@ declare namespace WAFV2 {
   export interface Method {
   }
   export type MetricName = string;
+  export interface MobileSdkRelease {
+    /**
+     * The release version. 
+     */
+    ReleaseVersion?: VersionKeyString;
+    /**
+     * The timestamp of the release. 
+     */
+    Timestamp?: Timestamp;
+    /**
+     * Notes describing the release.
+     */
+    ReleaseNotes?: ReleaseNotes;
+    /**
+     * Tags that are associated with the release. 
+     */
+    Tags?: TagList;
+  }
   export type NextMarker = string;
   export interface NoneAction {
   }
@@ -1824,6 +1952,7 @@ declare namespace WAFV2 {
      */
     Statements: Statements;
   }
+  export type OutputUrl = string;
   export interface OverrideAction {
     /**
      * Override the rule group evaluation result to count only.   This option is usually set to none. It does not affect how the rules in the rule group are evaluated. If you want the rules in the rule group to only count matches, do not use this and instead exclude those rules in your rule group reference statement settings.  
@@ -1835,6 +1964,14 @@ declare namespace WAFV2 {
     None?: NoneAction;
   }
   export type PaginationLimit = number;
+  export interface PasswordField {
+    /**
+     * The name of the password field. For example /form/password.
+     */
+    Identifier: FieldIdentifier;
+  }
+  export type PayloadType = "JSON"|"FORM_ENCODED"|string;
+  export type Platform = "IOS"|"ANDROID"|string;
   export type PolicyString = string;
   export type PopulationSize = number;
   export type PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"|string;
@@ -2009,6 +2146,18 @@ declare namespace WAFV2 {
   }
   export type RegexPatternString = string;
   export type RegularExpressionList = Regex[];
+  export type ReleaseNotes = string;
+  export type ReleaseSummaries = ReleaseSummary[];
+  export interface ReleaseSummary {
+    /**
+     * The release version. 
+     */
+    ReleaseVersion?: VersionKeyString;
+    /**
+     * The timestamp of the release. 
+     */
+    Timestamp?: Timestamp;
+  }
   export type ResourceArn = string;
   export type ResourceArns = ResourceArn[];
   export type ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|string;
@@ -2400,7 +2549,7 @@ declare namespace WAFV2 {
      */
     Description?: EntityDescription;
     /**
-     * Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.  Examples:    To configure WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.   To configure WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify 192.0.2.0/24.   To configure WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.   To configure WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.   For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing.
+     * Contains an array of strings that specifies zero or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.  Example address strings:    To configure WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify 192.0.2.44/32.   To configure WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify 192.0.2.0/24.   To configure WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify 1111:0000:0000:0000:0000:0000:0000:0111/128.   To configure WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify 1111:0000:0000:0000:0000:0000:0000:0000/64.   For more information about CIDR notation, see the Wikipedia entry Classless Inter-Domain Routing. Example JSON Addresses specifications:    Empty array: "Addresses": []    Array with one address: "Addresses": ["192.0.2.44/32"]    Array with three addresses: "Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]    INVALID specification: "Addresses": [""] INVALID   
      */
     Addresses: IPAddresses;
     /**
@@ -2575,6 +2724,12 @@ declare namespace WAFV2 {
     NextLockToken?: LockToken;
   }
   export interface UriPath {
+  }
+  export interface UsernameField {
+    /**
+     * The name of the username field. For example /form/username.
+     */
+    Identifier: FieldIdentifier;
   }
   export type VendorName = string;
   export type VersionKeyString = string;
