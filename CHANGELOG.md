@@ -1,6 +1,113 @@
 # Changelog for AWS SDK for JavaScript
-<!--LATEST=2.1096.0-->
+<!--LATEST=2.1116.0-->
 <!--ENTRYINSERT-->
+
+## 2.1116.0
+* feature: Athena: This release adds subfields, ErrorMessage, Retryable, to the AthenaError response object in the GetQueryExecution API when a query fails.
+* feature: Lightsail: This release adds support to describe the synchronization status of the account-level block public access feature for your Amazon Lightsail buckets.
+* feature: RDS: Removes Amazon RDS on VMware with the deletion of APIs related to Custom Availability Zones and Media installation
+
+## 2.1115.0
+* feature: AppStream: Includes updates for create and update fleet APIs to manage the session scripts locations for Elastic fleets.
+* feature: Appflow: Enables users to pass custom token URL parameters for Oauth2 authentication during create connector profile
+* feature: Batch: Enables configuration updates for compute environments with BEST_FIT_PROGRESSIVE and SPOT_CAPACITY_OPTIMIZED allocation strategies.
+* feature: Glue: Auto Scaling for Glue version 3.0 and later jobs to dynamically scale compute resources. This SDK change provides customers with the auto-scaled DPU usage
+
+## 2.1114.0
+* feature: CloudWatch: Adds support for additional statistics in CloudWatch Metric Streams.
+* feature: FSx: This release adds support for deploying FSx for ONTAP file systems in a single Availability Zone.
+
+## 2.1113.0
+* feature: DevOpsGuru: This release adds new APIs DeleteInsight to deletes the insight along with the associated anomalies, events and recommendations.
+* feature: EC2: X2idn and X2iedn instances are powered by 3rd generation Intel Xeon Scalable processors with an all-core turbo frequency up to 3.5 GHzAmazon EC2. C6a instances are powered by 3rd generation AMD EPYC processors.
+* feature: EFS: Amazon EFS adds support for a ThrottlingException when using the CreateAccessPoint API if the account is nearing the AccessPoint limit(120).
+* feature: IoTTwinMaker: This release adds the following new features: 1) ListEntities API now supports search using ExternalId. 2) BatchPutPropertyValue and GetPropertyValueHistory API now allows users to represent time in sub-second level precisions.
+
+## 2.1112.0
+* feature: AmplifyUIBuilder: In this release, we have added the ability to bind events to component level actions.
+* feature: AppRunner: This release adds tracing for App Runner services with X-Ray using AWS Distro for OpenTelemetry. New APIs: CreateObservabilityConfiguration, DescribeObservabilityConfiguration, ListObservabilityConfigurations, and DeleteObservabilityConfiguration. Updated APIs: CreateService and UpdateService.
+* feature: WorkSpaces: Added API support that allows customers to create GPU-enabled WorkSpaces using EC2 G4dn instances.
+
+## 2.1111.0
+* feature: MediaConvert: AWS Elemental MediaConvert SDK has added support for the pass-through of WebVTT styling to WebVTT outputs, pass-through of KLV metadata to supported formats, and improved filter support for processing 444/RGB content.
+* feature: MediaPackageVod: This release adds ScteMarkersSource as an available field for Dash Packaging Configurations. When set to MANIFEST, MediaPackage will source the SCTE-35 markers from the manifest. When set to SEGMENTS, MediaPackage will source the SCTE-35 markers from the segments.
+* feature: WAFV2: Add a new CurrentDefaultVersion field to ListAvailableManagedRuleGroupVersions API response; add a new VersioningSupported boolean to each ManagedRuleGroup returned from ListAvailableManagedRuleGroups API response.
+
+## 2.1110.0
+* feature: APIGateway: ApiGateway CLI command get-usage now includes usagePlanId, startDate, and endDate fields in the output to match documentation.
+* feature: DocDB: Added support to enable/disable performance insights when creating or modifying db instances
+* feature: EventBridge: Adds new EventBridge Endpoint resources for disaster recovery, multi-region failover, and cross-region replication capabilities to help you build resilient event-driven applications.
+* feature: Personalize: This release provides tagging support in AWS Personalize.
+* feature: SageMaker: Amazon Sagemaker Notebook Instances now supports G5 instance types
+
+## 2.1109.0
+* feature: ConfigService: Add resourceType enums for AWS::EMR::SecurityConfiguration and AWS::SageMaker::CodeRepository
+* feature: Kendra: Amazon Kendra now provides a data source connector for Box. For more information, see https://docs.aws.amazon.com/kendra/latest/dg/data-source-box.html
+* feature: Lambda: This release adds new APIs for creating and managing Lambda Function URLs and adds a new FunctionUrlAuthType parameter to the AddPermission API. Customers can use Function URLs to create built-in HTTPS endpoints on their functions.
+* feature: Panorama: Added Brand field to device listings.
+
+## 2.1108.0
+* feature: DataSync: AWS DataSync now supports Amazon FSx for OpenZFS locations.
+* feature: FSx: Provide customers more visibility into file system status by adding new "Misconfigured Unavailable" status for Amazon FSx for Windows File Server.
+* feature: SecurityHub: Added additional ASFF details for RdsSecurityGroup AutoScalingGroup, ElbLoadBalancer, CodeBuildProject and RedshiftCluster.
+
+## 2.1107.0
+* feature: Iot: AWS IoT - AWS IoT Device Defender adds support to list metric datapoints collected for IoT devices through the ListMetricValues API
+* feature: Proton: SDK release to support tagging for AWS Proton Repository resource
+* feature: ServiceCatalog: This release adds ProvisioningArtifictOutputKeys to DescribeProvisioningParameters to reference the outputs of a Provisioned Product and deprecates ProvisioningArtifactOutputs.
+
+## 2.1106.0
+* feature: Connect: This release updates these APIs: UpdateInstanceAttribute, DescribeInstanceAttribute and ListInstanceAttributes. You can use it to programmatically enable/disable multi-party conferencing using attribute type MULTI_PARTY_CONFERENCING on the specified Amazon Connect instance.
+
+## 2.1105.0
+* feature: CloudControl: SDK release for Cloud Control API in Amazon Web Services China (Beijing) Region, operated by Sinnet, and Amazon Web Services China (Ningxia) Region, operated by NWCD
+* feature: DataBrew: This AWS Glue Databrew release adds feature to support ORC as an input format.
+* feature: Grafana: This release adds tagging support to the Managed Grafana service. New APIs: TagResource, UntagResource and ListTagsForResource. Updates: add optional field tags to support tagging while calling CreateWorkspace.
+* feature: PinpointSMSVoiceV2: Amazon Pinpoint now offers a version 2.0 suite of SMS and voice APIs, providing increased control over sending and configuration. This release is a new SDK for sending SMS and voice messages called PinpointSMSVoiceV2.
+* feature: Route53RecoveryCluster: This release adds a new API "ListRoutingControls" to list routing control states using the highly reliable Route 53 ARC data plane endpoints.
+* feature: WorkSpaces: Added APIs that allow you to customize the logo, login message, and help links in the WorkSpaces client login page. To learn more, visit https://docs.aws.amazon.com/workspaces/latest/adminguide/customize-branding.html
+
+## 2.1104.0
+* feature: EC2: This release simplifies the auto-recovery configuration process enabling customers to set the recovery behavior to disabled or default
+* feature: FMS: AWS Firewall Manager now supports the configuration of third-party policies that can use either the centralized or distributed deployment models.
+* feature: FSx: This release adds support for modifying throughput capacity for FSx for ONTAP file systems.
+* feature: IotData: Update the default AWS IoT Core Data Plane endpoint from VeriSign signed to ATS signed. If you have firewalls with strict egress rules, configure the rules to grant you access to data-ats.iot.[region].amazonaws.com or data-ats.iot.[region].amazonaws.com.cn.
+
+## 2.1103.0
+* feature: Organizations: This release provides the new CloseAccount API that enables principals in the management account to close any member account within an organization.
+
+## 2.1102.0
+* feature: MediaLive: This release adds support for selecting a maintenance window.
+
+## 2.1101.0
+* feature: Batch: Bug Fix: Fixed a bug where shapes were marked as unboxed and were not serialized and sent over the wire, causing an API error from the service.
+* feature: EC2: This is release adds support for Amazon VPC Reachability Analyzer to analyze path through a Transit Gateway.
+* feature: SSM: This Patch Manager release supports creating, updating, and deleting Patch Baselines for Rocky Linux OS.
+
+## 2.1100.0
+* feature: ConfigService: Added new APIs GetCustomRulePolicy and GetOrganizationCustomRulePolicy, and updated existing APIs PutConfigRule, DescribeConfigRule, DescribeConfigRuleEvaluationStatus, PutOrganizationConfigRule, DescribeConfigRule to support a new feature for building AWS Config rules with AWS CloudFormation Guard
+* feature: Lambda: Adds support for increased ephemeral storage (/tmp) up to 10GB for Lambda functions. Customers can now provision up to 10 GB of ephemeral storage per function instance, a 20x increase over the previous limit of 512 MB.
+* feature: TranscribeService: This release adds an additional parameter for subtitling with Amazon Transcribe batch jobs: outputStartIndex.
+
+## 2.1099.0
+* feature: AuditManager: This release updates 1 API parameter, the SnsArn attribute. The character length and regex pattern for the SnsArn attribute have been updated, which enables you to deselect an SNS topic when using the UpdateSettings operation.
+* feature: EBS: Increased the maximum supported value for the Timeout parameter of the StartSnapshot API from 60 minutes to 4320 minutes.  Changed the HTTP error code for ConflictException from 503 to 409.
+* feature: GameSparks: Released the preview of Amazon GameSparks, a fully managed AWS service that provides a multi-service backend for game developers.
+* feature: Redshift: This release adds a new [--encrypted | --no-encrypted] field in restore-from-cluster-snapshot API. Customers can now restore an unencrypted snapshot to a cluster encrypted with AWS Managed Key or their own KMS key.
+* feature: SSM: Update AddTagsToResource, ListTagsForResource, and RemoveTagsFromResource APIs to reflect the support for tagging Automation resources. Includes other minor documentation updates.
+
+## 2.1098.0
+* bugfix: Route53: fix Route53 endpoints resolution for us-iso-* regions
+* feature: CostExplorer: Added three new APIs to support tagging and resource-level authorization on Cost Explorer resources: TagResource, UntagResource, ListTagsForResource.  Added optional parameters to CreateCostCategoryDefinition, CreateAnomalySubscription and CreateAnomalyMonitor APIs to support Tag On Create.
+* feature: LakeFormation: The release fixes the incorrect permissions called out in the documentation - DESCRIBE_TAG, ASSOCIATE_TAG, DELETE_TAG, ALTER_TAG. This trebuchet release fixes the corresponding SDK and documentation.
+* feature: Location: Amazon Location Service now includes a MaxResults parameter for GetDevicePositionHistory requests.
+* feature: Polly: Amazon Polly adds new Catalan voice - Arlet. Arlet is available as Neural voice only.
+
+## 2.1097.0
+* feature: ChimeSDKMeetings: Add support for media replication to link multiple WebRTC media sessions together to reach larger and global audiences. Participants connected to a replica session can be granted access to join the primary session and can switch sessions with their existing WebRTC connection
+* feature: ECR: This release includes a fix in the DescribeImageScanFindings paginated output.
+* feature: MediaConnect: This release adds support for selecting a maintenance window.
+* feature: QuickSight: AWS QuickSight Service Features - Expand public API support for group management.
 
 ## 2.1096.0
 * feature: Glue: Added 9 new APIs for AWS Glue Interactive Sessions: ListSessions, StopSession, CreateSession, GetSession, DeleteSession, RunStatement, GetStatement, ListStatements, CancelStatement

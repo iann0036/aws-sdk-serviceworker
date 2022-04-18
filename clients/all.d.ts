@@ -300,3 +300,5 @@ export import WorkSpacesWeb = require('./workspacesweb');
 export import AmplifyUIBuilder = require('./amplifyuibuilder');
 export import Keyspaces = require('./keyspaces');
 export import Billingconductor = require('./billingconductor');
+export import GameSparks = require('./gamesparks');
+export import PinpointSMSVoiceV2 = require('./pinpointsmsvoicev2');
