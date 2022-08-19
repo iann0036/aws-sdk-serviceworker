@@ -303,5 +303,15 @@ module.exports = {
   Keyspaces: require('./keyspaces'),
   Billingconductor: require('./billingconductor'),
   GameSparks: require('./gamesparks'),
-  PinpointSMSVoiceV2: require('./pinpointsmsvoicev2')
+  PinpointSMSVoiceV2: require('./pinpointsmsvoicev2'),
+  Ivschat: require('./ivschat'),
+  ChimeSDKMediaPipelines: require('./chimesdkmediapipelines'),
+  EMRServerless: require('./emrserverless'),
+  M2: require('./m2'),
+  ConnectCampaigns: require('./connectcampaigns'),
+  RedshiftServerless: require('./redshiftserverless'),
+  RolesAnywhere: require('./rolesanywhere'),
+  LicenseManagerUserSubscriptions: require('./licensemanagerusersubscriptions'),
+  BackupStorage: require('./backupstorage'),
+  PrivateNetworks: require('./privatenetworks')
 };
