@@ -11,3 +11,4 @@ npm run-script build
 ```
 
 The `aws-sdk-2.xxxx.x-sw.js` file will be generated for you in the project root.
+
