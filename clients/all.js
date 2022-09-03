@@ -313,5 +313,7 @@ module.exports = {
   RolesAnywhere: require('./rolesanywhere'),
   LicenseManagerUserSubscriptions: require('./licensemanagerusersubscriptions'),
   BackupStorage: require('./backupstorage'),
-  PrivateNetworks: require('./privatenetworks')
+  PrivateNetworks: require('./privatenetworks'),
+  SupportApp: require('./supportapp'),
+  ControlTower: require('./controltower')
 };

@@ -1,6 +1,58 @@
 # Changelog for AWS SDK for JavaScript
-<!--LATEST=2.1199.0-->
+<!--LATEST=2.1209.0-->
 <!--ENTRYINSERT-->
+
+## 2.1209.0
+* feature: CognitoIdentityServiceProvider: This release adds a new "AuthSessionValidity" field to the UserPoolClient in Cognito. Application admins can configure this value for their users' authentication duration, which is currently fixed at 3 minutes, up to 15 minutes. Setting this field will also apply to the SMS MFA authentication flow.
+* feature: Connect: This release adds search APIs for Routing Profiles and Queues, which can be used to search for those resources within a Connect Instance.
+* feature: MediaPackage: Added support for AES_CTR encryption to CMAF origin endpoints
+* feature: SageMaker: This release enables administrators to attribute user activity and API calls from Studio notebooks, Data Wrangler and Canvas to specific users even when users share the same execution IAM role.  ExecutionRoleIdentityConfig at Sagemaker domain level enables this feature.
+
+## 2.1208.0
+* feature: ControlTower: This release contains the first SDK for AWS Control Tower. It introduces  a new set of APIs: EnableControl, DisableControl, GetControlOperation, and ListEnabledControls.
+
+## 2.1207.0
+* feature: IVS: IVS Merge Fragmented Streams. This release adds support for recordingReconnectWindow field in IVS recordingConfigurations. For more information see https://docs.aws.amazon.com/ivs/latest/APIReference/Welcome.html
+* feature: IdentityStore: Expand IdentityStore API to support Create, Read, Update, Delete and Get operations for User, Group and GroupMembership resources.
+* feature: IoTThingsGraph: This release deprecates all APIs of the ThingsGraph service
+* feature: SageMaker: SageMaker Inference Recommender now accepts Inference Recommender fields: Domain, Task, Framework, SamplePayloadUrl, SupportedContentTypes, SupportedInstanceTypes, directly in our CreateInferenceRecommendationsJob API through ContainerConfig
+
+## 2.1206.0
+* feature: GreengrassV2: Adds topologyFilter to ListInstalledComponentsRequest which allows filtration of components by ROOT or ALL (including root and dependency components). Adds lastStatusChangeTimestamp to ListInstalledComponents response to show the last time a component changed state on a device.
+* feature: LookoutEquipment: This release adds new apis for providing labels.
+* feature: Macie2: This release of the Amazon Macie API adds support for using allow lists to define specific text and text patterns to ignore when inspecting data sources for sensitive data.
+
+## 2.1205.0
+* feature: VoiceID: Amazon Connect Voice ID now detects voice spoofing.  When a prospective fraudster tries to spoof caller audio using audio playback or synthesized speech, Voice ID will return a risk score and outcome to indicate the how likely it is that the voice is spoofed.
+
+## 2.1204.0
+* feature: MediaPackage: This release adds Ads AdTriggers and AdsOnDeliveryRestrictions to describe calls for CMAF endpoints on MediaPackage.
+* feature: Token: Read sso data from sso-session section in SSOTokenProvider
+* feature: Token: Set token from AWS.Signers.Bearer when specified by authtype/signatureVersion
+* feature: token: Add TokenProviderChain with Token/Static/SSO
+
+## 2.1203.0
+* feature: GameLift: This release adds support for eight EC2 local zones as fleet locations; Atlanta, Chicago, Dallas, Denver, Houston, Kansas City (us-east-1-mci-1a), Los Angeles, and Phoenix. It also adds support for C5d, C6a, C6i, and R5d EC2 instance families.
+* feature: IoTWireless: This release includes a new feature for the customers to enable the LoRa gateways to send out beacons for Class B devices and an option to select one or more gateways for Class C devices when sending the LoRaWAN downlink messages.
+* feature: Panorama: Support sorting and filtering in ListDevices API, and add more fields to device listings and single device detail
+* feature: SSOOIDC: Updated required request parameters on IAM Identity Center's OIDC CreateToken action.
+
+## 2.1202.0
+* feature: CloudFront: Adds support for CloudFront origin access control (OAC), making it possible to restrict public access to S3 bucket origins in all AWS Regions, those with SSE-KMS, and more.
+* feature: ConfigService: AWS Config now supports ConformancePackTemplate documents in SSM Docs for the deployment and update of conformance packs.
+* feature: QuickSight: Added a new optional property DashboardVisual under ExperienceConfiguration parameter of GenerateEmbedUrlForAnonymousUser and GenerateEmbedUrlForRegisteredUser API operations. This supports embedding of specific visuals in QuickSight dashboards.
+
+## 2.1201.0
+* feature: RDS: RDS for Oracle supports Oracle Data Guard switchover and read replica backups.
+
+## 2.1200.0
+* feature: EC2: R6a instances are powered by 3rd generation AMD EPYC (Milan) processors delivering all-core turbo frequency of 3.6 GHz. C6id, M6id, and R6id instances are powered by 3rd generation Intel Xeon Scalable processor (Ice Lake) delivering all-core turbo frequency of 3.5 GHz.
+* feature: ForecastQueryService: releasing What-If Analysis APIs
+* feature: ForecastService: releasing What-If Analysis APIs and update ARN regex pattern to be more strict in accordance with security recommendation
+* feature: IoTSiteWise: Enable non-unique asset names under different hierarchies
+* feature: LexModelsV2: This release introduces a new feature to stop a running BotRecommendation Job for Automated Chatbot Designer.
+* feature: SecurityHub: Added new resource details objects to ASFF, including resources for AwsBackupBackupVault, AwsBackupBackupPlan and AwsBackupRecoveryPoint. Added FixAvailable, FixedInVersion and Remediation  to Vulnerability.
+* feature: SupportApp: This is the initial SDK release for the AWS Support App in Slack.
 
 ## 2.1199.0
 * feature: Connect: This release adds SearchSecurityProfiles API which can be used to search for Security Profile resources within a Connect Instance.
