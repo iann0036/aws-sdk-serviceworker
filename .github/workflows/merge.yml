@@ -24,3 +24,5 @@ jobs:
         git pull aws master || true
         git checkout --ours -- README.md
         git add README.md
+        git commit -m "Auto-merge"
+        git push origin master
