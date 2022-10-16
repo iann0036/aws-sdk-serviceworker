@@ -7,6 +7,7 @@ This is a fork of the [AWS JS SDK v2](https://github.com/aws/aws-sdk-js) with mo
 To generate the full unminified SDK, run the following:
 
 ```
+npm update
 npm run-script build
 ```
 
