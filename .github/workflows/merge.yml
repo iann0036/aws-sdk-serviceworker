@@ -21,7 +21,7 @@ jobs:
         git config --local user.email "githubbot@ian.mn"
         git config --local user.name "Ian Mckay [bot]"
         git remote add aws https://github.com/aws/aws-sdk-js.git || true
-        git pull aws master || true
+        git pull --ff-only aws master || true
         git checkout --ours -- README.md
         git add README.md
         git add .
