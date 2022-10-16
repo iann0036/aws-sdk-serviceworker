@@ -1,0 +1,26 @@
+name: Auto-merge
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-version:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: git
+      run: |
+        git --version
+        git config user.name "Auto Merge Bot"
+        git config user.email "<>"
+        git remote add aws https://github.com/aws/aws-sdk-js.git
+        git pull aws master
+        git checkout --ours -- README.md
+        git add README.md
