@@ -23,9 +23,12 @@ jobs:
         git remote add aws https://github.com/aws/aws-sdk-js.git || true
         git config pull.rebase false
         git pull aws master || true
+        VER=`cat package.json | jq -r '.version'`
+        tmp=$(mktemp)
+        jq --arg ver "$VER" '.version = $ver' package-lock.json > "$tmp" && mv "$tmp" package-lock.json
+        jq --arg ver "$VER" '.packages."".version = $ver' package-lock.json > "$tmp" && mv "$tmp" package-lock.json
         git checkout --ours -- README.md
-        git add README.md
         git add .
-        git commit -m "Auto-merge" -a
+        git commit -m "Auto-merge" -a || exit 0
         remote_repo="https://iann0036-bot:${BOT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git push "${remote_repo}" HEAD:master
