@@ -27,4 +27,4 @@ jobs:
         git add .
         git commit -m "Auto-merge" -a
         remote_repo="https://iann0036-bot:${BOT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push "${remote_repo}" HEAD:main
+        git push "${remote_repo}" HEAD:master
