@@ -314,3 +314,6 @@ export import BackupStorage = require('./backupstorage');
 export import PrivateNetworks = require('./privatenetworks');
 export import SupportApp = require('./supportapp');
 export import ControlTower = require('./controltower');
+export import IoTFleetWise = require('./iotfleetwise');
+export import MigrationHubOrchestrator = require('./migrationhuborchestrator');
+export import ConnectCases = require('./connectcases');

@@ -61,11 +61,11 @@ declare class SageMaker extends Service {
    */
   createAlgorithm(callback?: (err: AWSError, data: SageMaker.Types.CreateAlgorithmOutput) => void): Request<SageMaker.Types.CreateAlgorithmOutput, AWSError>;
   /**
-   * Creates a running app for the specified UserProfile. Supported apps are JupyterServer and KernelGateway. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
+   * Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
    */
   createApp(params: SageMaker.Types.CreateAppRequest, callback?: (err: AWSError, data: SageMaker.Types.CreateAppResponse) => void): Request<SageMaker.Types.CreateAppResponse, AWSError>;
   /**
-   * Creates a running app for the specified UserProfile. Supported apps are JupyterServer and KernelGateway. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
+   * Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
    */
   createApp(callback?: (err: AWSError, data: SageMaker.Types.CreateAppResponse) => void): Request<SageMaker.Types.CreateAppResponse, AWSError>;
   /**
@@ -373,11 +373,11 @@ declare class SageMaker extends Service {
    */
   createStudioLifecycleConfig(callback?: (err: AWSError, data: SageMaker.Types.CreateStudioLifecycleConfigResponse) => void): Request<SageMaker.Types.CreateStudioLifecycleConfigResponse, AWSError>;
   /**
-   * Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.  If you choose to host your model using SageMaker hosting services, you can use the resulting model artifacts as part of the model. You can also use the artifacts in a machine learning service other than SageMaker, provided that you know how to use them for inference.  In the request body, you provide the following:     AlgorithmSpecification - Identifies the training algorithm to use.     HyperParameters - Specify these algorithm-specific parameters to enable the estimation of model parameters during training. Hyperparameters can be tuned to optimize this learning process. For a list of hyperparameters for each training algorithm provided by SageMaker, see Algorithms.     InputDataConfig - Describes the training dataset and the Amazon S3, EFS, or FSx location where it is stored.    OutputDataConfig - Identifies the Amazon S3 bucket where you want SageMaker to save the results of model training.     ResourceConfig - Identifies the resources, ML compute instances, and ML storage volumes to deploy for model training. In distributed training, you specify more than one instance.     EnableManagedSpotTraining - Optimize the cost of training machine learning models by up to 80% by using Amazon EC2 Spot instances. For more information, see Managed Spot Training.     RoleArn - The Amazon Resource Name (ARN) that SageMaker assumes to perform tasks on your behalf during model training. You must grant this role the necessary permissions so that SageMaker can successfully complete model training.     StoppingCondition - To help cap training costs, use MaxRuntimeInSeconds to set a time limit for training. Use MaxWaitTimeInSeconds to specify how long a managed spot training job has to complete.     Environment - The environment variables to set in the Docker container.    RetryStrategy - The number of times to retry the job when the job fails due to an InternalServerError.    For more information about SageMaker, see How It Works. 
+   * Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.  If you choose to host your model using SageMaker hosting services, you can use the resulting model artifacts as part of the model. You can also use the artifacts in a machine learning service other than SageMaker, provided that you know how to use them for inference.  In the request body, you provide the following:     AlgorithmSpecification - Identifies the training algorithm to use.     HyperParameters - Specify these algorithm-specific parameters to enable the estimation of model parameters during training. Hyperparameters can be tuned to optimize this learning process. For a list of hyperparameters for each training algorithm provided by SageMaker, see Algorithms.   You must not include any security-sensitive information, such as account access IDs, secrets, and tokens, in the dictionary for configuring hyperparameters. SageMaker rejects the training job request and returns an exception error for detected credentials, if such user input is found.     InputDataConfig - Describes the training dataset and the Amazon S3, EFS, or FSx location where it is stored.    OutputDataConfig - Identifies the Amazon S3 bucket where you want SageMaker to save the results of model training.     ResourceConfig - Identifies the resources, ML compute instances, and ML storage volumes to deploy for model training. In distributed training, you specify more than one instance.     EnableManagedSpotTraining - Optimize the cost of training machine learning models by up to 80% by using Amazon EC2 Spot instances. For more information, see Managed Spot Training.     RoleArn - The Amazon Resource Name (ARN) that SageMaker assumes to perform tasks on your behalf during model training. You must grant this role the necessary permissions so that SageMaker can successfully complete model training.     StoppingCondition - To help cap training costs, use MaxRuntimeInSeconds to set a time limit for training. Use MaxWaitTimeInSeconds to specify how long a managed spot training job has to complete.     Environment - The environment variables to set in the Docker container.    RetryStrategy - The number of times to retry the job when the job fails due to an InternalServerError.    For more information about SageMaker, see How It Works. 
    */
   createTrainingJob(params: SageMaker.Types.CreateTrainingJobRequest, callback?: (err: AWSError, data: SageMaker.Types.CreateTrainingJobResponse) => void): Request<SageMaker.Types.CreateTrainingJobResponse, AWSError>;
   /**
-   * Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.  If you choose to host your model using SageMaker hosting services, you can use the resulting model artifacts as part of the model. You can also use the artifacts in a machine learning service other than SageMaker, provided that you know how to use them for inference.  In the request body, you provide the following:     AlgorithmSpecification - Identifies the training algorithm to use.     HyperParameters - Specify these algorithm-specific parameters to enable the estimation of model parameters during training. Hyperparameters can be tuned to optimize this learning process. For a list of hyperparameters for each training algorithm provided by SageMaker, see Algorithms.     InputDataConfig - Describes the training dataset and the Amazon S3, EFS, or FSx location where it is stored.    OutputDataConfig - Identifies the Amazon S3 bucket where you want SageMaker to save the results of model training.     ResourceConfig - Identifies the resources, ML compute instances, and ML storage volumes to deploy for model training. In distributed training, you specify more than one instance.     EnableManagedSpotTraining - Optimize the cost of training machine learning models by up to 80% by using Amazon EC2 Spot instances. For more information, see Managed Spot Training.     RoleArn - The Amazon Resource Name (ARN) that SageMaker assumes to perform tasks on your behalf during model training. You must grant this role the necessary permissions so that SageMaker can successfully complete model training.     StoppingCondition - To help cap training costs, use MaxRuntimeInSeconds to set a time limit for training. Use MaxWaitTimeInSeconds to specify how long a managed spot training job has to complete.     Environment - The environment variables to set in the Docker container.    RetryStrategy - The number of times to retry the job when the job fails due to an InternalServerError.    For more information about SageMaker, see How It Works. 
+   * Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.  If you choose to host your model using SageMaker hosting services, you can use the resulting model artifacts as part of the model. You can also use the artifacts in a machine learning service other than SageMaker, provided that you know how to use them for inference.  In the request body, you provide the following:     AlgorithmSpecification - Identifies the training algorithm to use.     HyperParameters - Specify these algorithm-specific parameters to enable the estimation of model parameters during training. Hyperparameters can be tuned to optimize this learning process. For a list of hyperparameters for each training algorithm provided by SageMaker, see Algorithms.   You must not include any security-sensitive information, such as account access IDs, secrets, and tokens, in the dictionary for configuring hyperparameters. SageMaker rejects the training job request and returns an exception error for detected credentials, if such user input is found.     InputDataConfig - Describes the training dataset and the Amazon S3, EFS, or FSx location where it is stored.    OutputDataConfig - Identifies the Amazon S3 bucket where you want SageMaker to save the results of model training.     ResourceConfig - Identifies the resources, ML compute instances, and ML storage volumes to deploy for model training. In distributed training, you specify more than one instance.     EnableManagedSpotTraining - Optimize the cost of training machine learning models by up to 80% by using Amazon EC2 Spot instances. For more information, see Managed Spot Training.     RoleArn - The Amazon Resource Name (ARN) that SageMaker assumes to perform tasks on your behalf during model training. You must grant this role the necessary permissions so that SageMaker can successfully complete model training.     StoppingCondition - To help cap training costs, use MaxRuntimeInSeconds to set a time limit for training. Use MaxWaitTimeInSeconds to specify how long a managed spot training job has to complete.     Environment - The environment variables to set in the Docker container.    RetryStrategy - The number of times to retry the job when the job fails due to an InternalServerError.    For more information about SageMaker, see How It Works. 
    */
   createTrainingJob(callback?: (err: AWSError, data: SageMaker.Types.CreateTrainingJobResponse) => void): Request<SageMaker.Types.CreateTrainingJobResponse, AWSError>;
   /**
@@ -405,11 +405,11 @@ declare class SageMaker extends Service {
    */
   createTrialComponent(callback?: (err: AWSError, data: SageMaker.Types.CreateTrialComponentResponse) => void): Request<SageMaker.Types.CreateTrialComponentResponse, AWSError>;
   /**
-   * Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from Amazon Web Services SSO, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory. 
+   * Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from IAM Identity Center, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory. 
    */
   createUserProfile(params: SageMaker.Types.CreateUserProfileRequest, callback?: (err: AWSError, data: SageMaker.Types.CreateUserProfileResponse) => void): Request<SageMaker.Types.CreateUserProfileResponse, AWSError>;
   /**
-   * Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from Amazon Web Services SSO, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory. 
+   * Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from IAM Identity Center, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory. 
    */
   createUserProfile(callback?: (err: AWSError, data: SageMaker.Types.CreateUserProfileResponse) => void): Request<SageMaker.Types.CreateUserProfileResponse, AWSError>;
   /**
@@ -509,11 +509,11 @@ declare class SageMaker extends Service {
    */
   deleteDeviceFleet(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
-   * Used to delete a domain. If you onboarded with IAM mode, you will need to delete your domain to onboard again using Amazon Web Services SSO. Use with caution. All of the members of the domain will lose access to their EFS volume, including data, notebooks, and other artifacts. 
+   * Used to delete a domain. If you onboarded with IAM mode, you will need to delete your domain to onboard again using IAM Identity Center. Use with caution. All of the members of the domain will lose access to their EFS volume, including data, notebooks, and other artifacts. 
    */
   deleteDomain(params: SageMaker.Types.DeleteDomainRequest, callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
-   * Used to delete a domain. If you onboarded with IAM mode, you will need to delete your domain to onboard again using Amazon Web Services SSO. Use with caution. All of the members of the domain will lose access to their EFS volume, including data, notebooks, and other artifacts. 
+   * Used to delete a domain. If you onboarded with IAM mode, you will need to delete your domain to onboard again using IAM Identity Center. Use with caution. All of the members of the domain will lose access to their EFS volume, including data, notebooks, and other artifacts. 
    */
   deleteDomain(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
@@ -2069,11 +2069,11 @@ declare class SageMaker extends Service {
    */
   updateProject(callback?: (err: AWSError, data: SageMaker.Types.UpdateProjectOutput) => void): Request<SageMaker.Types.UpdateProjectOutput, AWSError>;
   /**
-   * Update a model training job to request a new Debugger profiling configuration.
+   * Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length.
    */
   updateTrainingJob(params: SageMaker.Types.UpdateTrainingJobRequest, callback?: (err: AWSError, data: SageMaker.Types.UpdateTrainingJobResponse) => void): Request<SageMaker.Types.UpdateTrainingJobResponse, AWSError>;
   /**
-   * Update a model training job to request a new Debugger profiling configuration.
+   * Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length.
    */
   updateTrainingJob(callback?: (err: AWSError, data: SageMaker.Types.UpdateTrainingJobResponse) => void): Request<SageMaker.Types.UpdateTrainingJobResponse, AWSError>;
   /**
@@ -2763,7 +2763,7 @@ declare namespace SageMaker {
   }
   export interface AutoMLCandidateGenerationConfig {
     /**
-     * A URL to the Amazon S3 data source containing selected features from the input data source to run an Autopilot job (optional). This file should be in json format as shown below:   { "FeatureAttributeNames":["col1", "col2", ...] }. The key name FeatureAttributeNames is fixed. The values listed in ["col1", "col2", ...] is case sensitive and should be a list of strings containing unique values that are a subset of the column names in the input data. The list of columns provided must not include the target column.
+     * A URL to the Amazon S3 data source containing selected features from the input data source to run an Autopilot job. You can input FeatureAttributeNames (optional) in JSON format as shown below:   { "FeatureAttributeNames":["col1", "col2", ...] }. You can also specify the data type of the feature (optional) in the format shown below:  { "FeatureDataTypes":{"col1":"numeric", "col2":"categorical" ... } }   These column keys may not include the target column.  In ensembling mode, Autopilot will only support the following data types: numeric, categorical, text and datetime. In HPO mode, Autopilot can support numeric, categorical, text, datetime and sequence. If only FeatureDataTypes is provided, the column keys (col1, col2,..) should be a subset of the column names in the input data.  If both FeatureDataTypes and FeatureAttributeNames are provided, then the column keys should be a subset of the column names provided in FeatureAttributeNames.  The key name FeatureAttributeNames is fixed. The values listed in ["col1", "col2", ...] is case sensitive and should be a list of strings containing unique values that are a subset of the column names in the input data. The list of columns provided must not include the target column.
      */
     FeatureSpecificationS3Uri?: S3Uri;
   }
@@ -2876,6 +2876,10 @@ declare namespace SageMaker {
      * The configuration for generating a candidate for an AutoML job (optional). 
      */
     CandidateGenerationConfig?: AutoMLCandidateGenerationConfig;
+    /**
+     * The method that Autopilot uses to train the data. You can either specify the mode manually or let Autopilot choose for you based on the dataset size by selecting AUTO. In AUTO mode, Autopilot chooses ENSEMBLING for datasets smaller than 100 MB, and HYPERPARAMETER_TUNING for larger ones. The ENSEMBLING mode uses a multi-stack ensemble model to predict classification and regression tasks directly from your dataset. This machine learning mode combines several base models to produce an optimal predictive model. It then uses a stacking ensemble method to combine predictions from contributing members. A multi-stack ensemble model can provide better performance over a single model by combining the predictive capabilities of multiple models. See Autopilot algorithm support for a list of algorithms supported by ENSEMBLING mode. The HYPERPARAMETER_TUNING (HPO) mode uses the best hyperparameters to train the best version of a model. HPO will automatically select an algorithm for the type of problem you want to solve. Then HPO finds the best hyperparameters according to your objective metric. See Autopilot algorithm support for a list of algorithms supported by HYPERPARAMETER_TUNING mode.
+     */
+    Mode?: AutoMLMode;
   }
   export type AutoMLJobName = string;
   export interface AutoMLJobObjective {
@@ -2929,6 +2933,7 @@ declare namespace SageMaker {
   export type AutoMLMaxResults = number;
   export type AutoMLMetricEnum = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|string;
   export type AutoMLMetricExtendedEnum = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"|"RMSE"|"MAE"|"R2"|"BalancedAccuracy"|"Precision"|"PrecisionMacro"|"Recall"|"RecallMacro"|"LogLoss"|string;
+  export type AutoMLMode = "AUTO"|"ENSEMBLING"|"HYPERPARAMETER_TUNING"|string;
   export type AutoMLNameContains = string;
   export interface AutoMLOutputDataConfig {
     /**
@@ -3123,6 +3128,12 @@ declare namespace SageMaker {
   export type CandidateStepName = string;
   export type CandidateStepType = "AWS::SageMaker::TrainingJob"|"AWS::SageMaker::TransformJob"|"AWS::SageMaker::ProcessingJob"|string;
   export type CandidateSteps = AutoMLCandidateStep[];
+  export interface CanvasAppSettings {
+    /**
+     * Time series forecast settings for the Canvas app.
+     */
+    TimeSeriesForecastingSettings?: TimeSeriesForecastingSettings;
+  }
   export interface CapacitySize {
     /**
      * Specifies the endpoint capacity type.    INSTANCE_COUNT: The endpoint activates based on the number of instances.    CAPACITY_PERCENT: The endpoint activates based on the specified percentage of capacity.  
@@ -3290,6 +3301,133 @@ declare namespace SageMaker {
      */
     RegisterNewBaseline?: Boolean;
   }
+  export type ClarifyContentTemplate = string;
+  export type ClarifyEnableExplanations = string;
+  export interface ClarifyExplainerConfig {
+    /**
+     * A JMESPath boolean expression used to filter which records to explain. Explanations are activated by default. See  EnableExplanations for additional information.
+     */
+    EnableExplanations?: ClarifyEnableExplanations;
+    /**
+     * The inference configuration parameter for the model container.
+     */
+    InferenceConfig?: ClarifyInferenceConfig;
+    /**
+     * The configuration for SHAP analysis.
+     */
+    ShapConfig: ClarifyShapConfig;
+  }
+  export type ClarifyFeatureHeaders = ClarifyHeader[];
+  export type ClarifyFeatureType = "numerical"|"categorical"|"text"|string;
+  export type ClarifyFeatureTypes = ClarifyFeatureType[];
+  export type ClarifyFeaturesAttribute = string;
+  export type ClarifyHeader = string;
+  export interface ClarifyInferenceConfig {
+    /**
+     * Provides the JMESPath expression to extract the features from a model container input in JSON Lines format. For example, if FeaturesAttribute is the JMESPath expression 'myfeatures', it extracts a list of features [1,2,3] from request data '{"myfeatures":[1,2,3}'.
+     */
+    FeaturesAttribute?: ClarifyFeaturesAttribute;
+    /**
+     * A template string used to format a JSON record into an acceptable model container input. For example, a ContentTemplate string '{"myfeatures":$features}' will format a list of features [1,2,3] into the record string '{"myfeatures":[1,2,3]}'. Required only when the model container input is in JSON Lines format.
+     */
+    ContentTemplate?: ClarifyContentTemplate;
+    /**
+     * The maximum number of records in a request that the model container can process when querying the model container for the predictions of a synthetic dataset. A record is a unit of input data that inference can be made on, for example, a single line in CSV data. If MaxRecordCount is 1, the model container expects one record per request. A value of 2 or greater means that the model expects batch requests, which can reduce overhead and speed up the inferencing process. If this parameter is not provided, the explainer will tune the record count per request according to the model container's capacity at runtime.
+     */
+    MaxRecordCount?: ClarifyMaxRecordCount;
+    /**
+     * The maximum payload size (MB) allowed of a request from the explainer to the model container. Defaults to 6 MB.
+     */
+    MaxPayloadInMB?: ClarifyMaxPayloadInMB;
+    /**
+     * A zero-based index used to extract a probability value (score) or list from model container output in CSV format. If this value is not provided, the entire model container output will be treated as a probability value (score) or list.  Example for a single class model: If the model container output consists of a string-formatted prediction label followed by its probability: '1,0.6', set ProbabilityIndex to 1 to select the probability value 0.6.  Example for a multiclass model: If the model container output consists of a string-formatted prediction label followed by its probability: '"[\'cat\',\'dog\',\'fish\']","[0.1,0.6,0.3]"', set ProbabilityIndex to 1 to select the probability values [0.1,0.6,0.3].
+     */
+    ProbabilityIndex?: ClarifyProbabilityIndex;
+    /**
+     * A zero-based index used to extract a label header or list of label headers from model container output in CSV format.  Example for a multiclass model: If the model container output consists of label headers followed by probabilities: '"[\'cat\',\'dog\',\'fish\']","[0.1,0.6,0.3]"', set LabelIndex to 0 to select the label headers ['cat','dog','fish'].
+     */
+    LabelIndex?: ClarifyLabelIndex;
+    /**
+     * A JMESPath expression used to extract the probability (or score) from the model container output if the model container is in JSON Lines format.  Example: If the model container output of a single request is '{"predicted_label":1,"probability":0.6}', then set ProbabilityAttribute to 'probability'.
+     */
+    ProbabilityAttribute?: ClarifyProbabilityAttribute;
+    /**
+     * A JMESPath expression used to locate the list of label headers in the model container output.  Example: If the model container output of a batch request is '{"labels":["cat","dog","fish"],"probability":[0.6,0.3,0.1]}', then set LabelAttribute to 'labels' to extract the list of label headers ["cat","dog","fish"] 
+     */
+    LabelAttribute?: ClarifyLabelAttribute;
+    /**
+     * For multiclass classification problems, the label headers are the names of the classes. Otherwise, the label header is the name of the predicted label. These are used to help readability for the output of the InvokeEndpoint API. See the response section under Invoke the endpoint in the Developer Guide for more information. If there are no label headers in the model container output, provide them manually using this parameter.
+     */
+    LabelHeaders?: ClarifyLabelHeaders;
+    /**
+     * The names of the features. If provided, these are included in the endpoint response payload to help readability of the InvokeEndpoint output. See the Response section under Invoke the endpoint in the Developer Guide for more information.
+     */
+    FeatureHeaders?: ClarifyFeatureHeaders;
+    /**
+     * A list of data types of the features (optional). Applicable only to NLP explainability. If provided, FeatureTypes must have at least one 'text' string (for example, ['text']). If FeatureTypes is not provided, the explainer infers the feature types based on the baseline data. The feature types are included in the endpoint response payload. For additional information see the response section under Invoke the endpoint in the Developer Guide for more information.
+     */
+    FeatureTypes?: ClarifyFeatureTypes;
+  }
+  export type ClarifyLabelAttribute = string;
+  export type ClarifyLabelHeaders = ClarifyHeader[];
+  export type ClarifyLabelIndex = number;
+  export type ClarifyMaxPayloadInMB = number;
+  export type ClarifyMaxRecordCount = number;
+  export type ClarifyMimeType = string;
+  export type ClarifyProbabilityAttribute = string;
+  export type ClarifyProbabilityIndex = number;
+  export type ClarifyShapBaseline = string;
+  export interface ClarifyShapBaselineConfig {
+    /**
+     * The MIME type of the baseline data. Choose from 'text/csv' or 'application/jsonlines'. Defaults to 'text/csv'.
+     */
+    MimeType?: ClarifyMimeType;
+    /**
+     * The inline SHAP baseline data in string format. ShapBaseline can have one or multiple records to be used as the baseline dataset. The format of the SHAP baseline file should be the same format as the training dataset. For example, if the training dataset is in CSV format and each record contains four features, and all features are numerical, then the format of the baseline data should also share these characteristics. For natural language processing (NLP) of text columns, the baseline value should be the value used to replace the unit of text specified by the Granularity of the TextConfig parameter. The size limit for ShapBasline is 4 KB. Use the ShapBaselineUri parameter if you want to provide more than 4 KB of baseline data.
+     */
+    ShapBaseline?: ClarifyShapBaseline;
+    /**
+     * The uniform resource identifier (URI) of the S3 bucket where the SHAP baseline file is stored. The format of the SHAP baseline file should be the same format as the format of the training dataset. For example, if the training dataset is in CSV format, and each record in the training dataset has four features, and all features are numerical, then the baseline file should also have this same format. Each record should contain only the features. If you are using a virtual private cloud (VPC), the ShapBaselineUri should be accessible to the VPC. For more information about setting up endpoints with Amazon Virtual Private Cloud, see Give SageMaker access to Resources in your Amazon Virtual Private Cloud.
+     */
+    ShapBaselineUri?: Url;
+  }
+  export interface ClarifyShapConfig {
+    /**
+     * The configuration for the SHAP baseline of the Kernal SHAP algorithm.
+     */
+    ShapBaselineConfig: ClarifyShapBaselineConfig;
+    /**
+     * The number of samples to be used for analysis by the Kernal SHAP algorithm.   The number of samples determines the size of the synthetic dataset, which has an impact on latency of explainability requests. For more information, see the Synthetic data of Configure and create an endpoint. 
+     */
+    NumberOfSamples?: ClarifyShapNumberOfSamples;
+    /**
+     * A Boolean toggle to indicate if you want to use the logit function (true) or log-odds units (false) for model predictions. Defaults to false.
+     */
+    UseLogit?: ClarifyShapUseLogit;
+    /**
+     * The starting value used to initialize the random number generator in the explainer. Provide a value for this parameter to obtain a deterministic SHAP result.
+     */
+    Seed?: ClarifyShapSeed;
+    /**
+     * A parameter that indicates if text features are treated as text and explanations are provided for individual units of text. Required for natural language processing (NLP) explainability only.
+     */
+    TextConfig?: ClarifyTextConfig;
+  }
+  export type ClarifyShapNumberOfSamples = number;
+  export type ClarifyShapSeed = number;
+  export type ClarifyShapUseLogit = boolean;
+  export interface ClarifyTextConfig {
+    /**
+     * Specifies the language of the text features in ISO 639-1 or ISO 639-3 code of a supported language.   For a mix of multiple languages, use code 'xx'. 
+     */
+    Language: ClarifyTextLanguage;
+    /**
+     * The unit of granularity for the analysis of text features. For example, if the unit is 'token', then each token (like a word in English) of the text is treated as a feature. SHAP values are computed for each unit/feature.
+     */
+    Granularity: ClarifyTextGranularity;
+  }
+  export type ClarifyTextGranularity = "token"|"sentence"|"paragraph"|string;
+  export type ClarifyTextLanguage = "af"|"sq"|"ar"|"hy"|"eu"|"bn"|"bg"|"ca"|"zh"|"hr"|"cs"|"da"|"nl"|"en"|"et"|"fi"|"fr"|"de"|"el"|"gu"|"he"|"hi"|"hu"|"is"|"id"|"ga"|"it"|"kn"|"ky"|"lv"|"lt"|"lb"|"mk"|"ml"|"mr"|"ne"|"nb"|"fa"|"pl"|"pt"|"ro"|"ru"|"sa"|"sr"|"tn"|"si"|"sk"|"sl"|"es"|"sv"|"tl"|"ta"|"tt"|"te"|"tr"|"uk"|"ur"|"yo"|"lij"|"xx"|string;
   export type ClientId = string;
   export type ClientSecret = string;
   export type ClientToken = string;
@@ -3647,7 +3785,7 @@ declare namespace SageMaker {
      */
     UserProfileName: UserProfileName;
     /**
-     * The type of app. Supported apps are JupyterServer and KernelGateway. TensorBoard is not supported.
+     * The type of app.
      */
     AppType: AppType;
     /**
@@ -4053,6 +4191,10 @@ declare namespace SageMaker {
      * Specifies configuration for how an endpoint performs asynchronous inference. This is a required field in order for your Endpoint to be invoked using InvokeEndpointAsync.
      */
     AsyncInferenceConfig?: AsyncInferenceConfig;
+    /**
+     * A member of CreateEndpointConfig that enables explainers.
+     */
+    ExplainerConfig?: ExplainerConfig;
   }
   export interface CreateEndpointConfigOutput {
     /**
@@ -4927,7 +5069,7 @@ declare namespace SageMaker {
      */
     TrainingJobName: TrainingJobName;
     /**
-     * Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start the learning process. For a list of hyperparameters for each training algorithm provided by SageMaker, see Algorithms.  You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is limited to 256 characters, as specified by the Length Constraint. 
+     * Algorithm-specific parameters that influence the quality of the model. You set hyperparameters before you start the learning process. For a list of hyperparameters for each training algorithm provided by SageMaker, see Algorithms.  You can specify a maximum of 100 hyperparameters. Each hyperparameter is a key-value pair. Each key and value is limited to 256 characters, as specified by the Length Constraint.   You must not include any security-sensitive information, such as account access IDs, secrets, and tokens, in the dictionary for configuring hyperparameters. SageMaker rejects the training job request and returns an exception error for detected credentials, if such user input is found. 
      */
     HyperParameters?: HyperParameters;
     /**
@@ -5142,11 +5284,11 @@ declare namespace SageMaker {
      */
     UserProfileName: UserProfileName;
     /**
-     * A specifier for the type of value specified in SingleSignOnUserValue. Currently, the only supported value is "UserName". If the Domain's AuthMode is Amazon Web Services SSO, this field is required. If the Domain's AuthMode is not Amazon Web Services SSO, this field cannot be specified. 
+     * A specifier for the type of value specified in SingleSignOnUserValue. Currently, the only supported value is "UserName". If the Domain's AuthMode is IAM Identity Center, this field is required. If the Domain's AuthMode is not IAM Identity Center, this field cannot be specified. 
      */
     SingleSignOnUserIdentifier?: SingleSignOnUserIdentifier;
     /**
-     * The username of the associated Amazon Web Services Single Sign-On User for this UserProfile. If the Domain's AuthMode is Amazon Web Services SSO, this field is required, and must match a valid username of a user in your directory. If the Domain's AuthMode is not Amazon Web Services SSO, this field cannot be specified. 
+     * The username of the associated Amazon Web Services Single Sign-On User for this UserProfile. If the Domain's AuthMode is IAM Identity Center, this field is required, and must match a valid username of a user in your directory. If the Domain's AuthMode is not IAM Identity Center, this field cannot be specified. 
      */
     SingleSignOnUserValue?: String256;
     /**
@@ -6535,7 +6677,7 @@ declare namespace SageMaker {
      */
     HomeEfsFileSystemId?: ResourceId;
     /**
-     * The Amazon Web Services SSO managed application instance ID.
+     * The IAM Identity Center managed application instance ID.
      */
     SingleSignOnManagedApplicationInstanceId?: String256;
     /**
@@ -6759,6 +6901,10 @@ declare namespace SageMaker {
      * Returns the description of an endpoint configuration created using the  CreateEndpointConfig  API.
      */
     AsyncInferenceConfig?: AsyncInferenceConfig;
+    /**
+     * The configuration parameters for an explainer.
+     */
+    ExplainerConfig?: ExplainerConfig;
   }
   export interface DescribeEndpointInput {
     /**
@@ -6812,6 +6958,10 @@ declare namespace SageMaker {
      * Returns the summary of an in-progress deployment. This field is only returned when the endpoint is creating or updating with a new endpoint configuration.
      */
     PendingDeploymentSummary?: PendingDeploymentSummary;
+    /**
+     * The configuration parameters for an explainer.
+     */
+    ExplainerConfig?: ExplainerConfig;
   }
   export interface DescribeExperimentRequest {
     /**
@@ -8316,6 +8466,10 @@ declare namespace SageMaker {
      * The environment variables to set in the Docker container.
      */
     Environment?: TrainingEnvironmentMap;
+    /**
+     * The status of the warm pool associated with the training job.
+     */
+    WarmPoolStatus?: WarmPoolStatus;
   }
   export interface DescribeTransformJobRequest {
     /**
@@ -8561,11 +8715,11 @@ declare namespace SageMaker {
      */
     FailureReason?: FailureReason;
     /**
-     * The Amazon Web Services SSO user identifier.
+     * The IAM Identity Center user identifier.
      */
     SingleSignOnUserIdentifier?: SingleSignOnUserIdentifier;
     /**
-     * The Amazon Web Services SSO user value.
+     * The IAM Identity Center user value.
      */
     SingleSignOnUserValue?: String256;
     /**
@@ -8850,7 +9004,7 @@ declare namespace SageMaker {
      */
     RStudioServerProDomainSettings?: RStudioServerProDomainSettings;
     /**
-     * The configuration for attaching a SageMaker user profile name to the execution role as a  sts:SourceIdentity key.
+     * The configuration for attaching a SageMaker user profile name to the execution role as a sts:SourceIdentity key.
      */
     ExecutionRoleIdentityConfig?: ExecutionRoleIdentityConfig;
   }
@@ -8860,7 +9014,7 @@ declare namespace SageMaker {
      */
     RStudioServerProDomainSettingsForUpdate?: RStudioServerProDomainSettingsForUpdate;
     /**
-     * The configuration for attaching a SageMaker user profile name to the execution role as a  sts:SourceIdentity key. This configuration can only be modified if there are no apps in the InService or Pending state.
+     * The configuration for attaching a SageMaker user profile name to the execution role as a sts:SourceIdentity key. This configuration can only be modified if there are no apps in the InService or Pending state.
      */
     ExecutionRoleIdentityConfig?: ExecutionRoleIdentityConfig;
   }
@@ -9472,6 +9626,12 @@ declare namespace SageMaker {
     Report?: MetricsSource;
   }
   export type ExplainabilityLocation = string;
+  export interface ExplainerConfig {
+    /**
+     * A member of ExplainerConfig that contains configuration parameters for the SageMaker Clarify explainer.
+     */
+    ClarifyExplainerConfig?: ClarifyExplainerConfig;
+  }
   export interface FailStepMetadata {
     /**
      * A message that you define and then is processed and rendered by the Fail step when the error occurs.
@@ -9630,6 +9790,7 @@ declare namespace SageMaker {
   export type FeatureParameterRemovals = FeatureParameterKey[];
   export type FeatureParameterValue = string;
   export type FeatureParameters = FeatureParameter[];
+  export type FeatureStatus = "ENABLED"|"DISABLED"|string;
   export type FeatureType = "Integral"|"Fractional"|"String"|string;
   export interface FileSource {
     /**
@@ -9980,7 +10141,7 @@ declare namespace SageMaker {
      */
     TaskAvailabilityLifetimeInSeconds?: TaskAvailabilityLifetimeInSeconds;
     /**
-     * Defines the maximum number of data objects that can be labeled by human workers at the same time. Also referred to as batch size. Each object may have more than one worker at one time. The default value is 1000 objects.
+     * Defines the maximum number of data objects that can be labeled by human workers at the same time. Also referred to as batch size. Each object may have more than one worker at one time. The default value is 1000 objects. To increase the maximum value to 5000 objects, contact Amazon Web Services Support.
      */
     MaxConcurrentTaskCount?: MaxConcurrentTaskCount;
     /**
@@ -10191,9 +10352,13 @@ declare namespace SageMaker {
   export type HyperParameterTuningJobArn = string;
   export interface HyperParameterTuningJobConfig {
     /**
-     * Specifies how hyperparameter tuning chooses the combinations of hyperparameter values to use for the training job it launches. To use the Bayesian search strategy, set this to Bayesian. To randomly search, set it to Random. For information about search strategies, see How Hyperparameter Tuning Works.
+     * Specifies how hyperparameter tuning chooses the combinations of hyperparameter values to use for the training job it launches. For information about search strategies, see How Hyperparameter Tuning Works.
      */
     Strategy: HyperParameterTuningJobStrategyType;
+    /**
+     * The configuration for the Hyperband optimization strategy. This parameter should be provided only if Hyperband is selected as the strategy for HyperParameterTuningJobConfig.
+     */
+    StrategyConfig?: HyperParameterTuningJobStrategyConfig;
     /**
      * The HyperParameterTuningJobObjective object that specifies the objective metric for this tuning job.
      */
@@ -10207,7 +10372,7 @@ declare namespace SageMaker {
      */
     ParameterRanges?: ParameterRanges;
     /**
-     * Specifies whether to use early stopping for training jobs launched by the hyperparameter tuning job. This can be one of the following values (the default value is OFF):  OFF  Training jobs launched by the hyperparameter tuning job do not use early stopping.  AUTO  SageMaker stops training jobs launched by the hyperparameter tuning job when they are unlikely to perform better than previously completed training jobs. For more information, see Stop Training Jobs Early.  
+     * Specifies whether to use early stopping for training jobs launched by the hyperparameter tuning job. Because the Hyperband strategy has its own advanced internal early stopping mechanism, TrainingJobEarlyStoppingType must be OFF to use Hyperband. This parameter can take on one of the following values (the default value is OFF):  OFF  Training jobs launched by the hyperparameter tuning job do not use early stopping.  AUTO  SageMaker stops training jobs launched by the hyperparameter tuning job when they are unlikely to perform better than previously completed training jobs. For more information, see Stop Training Jobs Early.  
      */
     TrainingJobEarlyStoppingType?: TrainingJobEarlyStoppingType;
     /**
@@ -10228,9 +10393,60 @@ declare namespace SageMaker {
   }
   export type HyperParameterTuningJobObjectiveType = "Maximize"|"Minimize"|string;
   export type HyperParameterTuningJobObjectives = HyperParameterTuningJobObjective[];
+  export interface HyperParameterTuningJobSearchEntity {
+    /**
+     * The name of a hyperparameter tuning job.
+     */
+    HyperParameterTuningJobName?: HyperParameterTuningJobName;
+    /**
+     * The Amazon Resource Name (ARN) of a hyperparameter tuning job.
+     */
+    HyperParameterTuningJobArn?: HyperParameterTuningJobArn;
+    HyperParameterTuningJobConfig?: HyperParameterTuningJobConfig;
+    TrainingJobDefinition?: HyperParameterTrainingJobDefinition;
+    /**
+     * The job definitions included in a hyperparameter tuning job.
+     */
+    TrainingJobDefinitions?: HyperParameterTrainingJobDefinitions;
+    /**
+     * The status of a hyperparameter tuning job.
+     */
+    HyperParameterTuningJobStatus?: HyperParameterTuningJobStatus;
+    /**
+     * The time that a hyperparameter tuning job was created.
+     */
+    CreationTime?: Timestamp;
+    /**
+     * The time that a hyperparameter tuning job ended.
+     */
+    HyperParameterTuningEndTime?: Timestamp;
+    /**
+     * The time that a hyperparameter tuning job was last modified.
+     */
+    LastModifiedTime?: Timestamp;
+    TrainingJobStatusCounters?: TrainingJobStatusCounters;
+    ObjectiveStatusCounters?: ObjectiveStatusCounters;
+    BestTrainingJob?: HyperParameterTrainingJobSummary;
+    OverallBestTrainingJob?: HyperParameterTrainingJobSummary;
+    WarmStartConfig?: HyperParameterTuningJobWarmStartConfig;
+    /**
+     * The error that was created when a hyperparameter tuning job failed.
+     */
+    FailureReason?: FailureReason;
+    /**
+     * The tags associated with a hyperparameter tuning job. For more information see Tagging Amazon Web Services resources.
+     */
+    Tags?: TagList;
+  }
   export type HyperParameterTuningJobSortByOptions = "Name"|"Status"|"CreationTime"|string;
   export type HyperParameterTuningJobStatus = "Completed"|"InProgress"|"Failed"|"Stopped"|"Stopping"|string;
-  export type HyperParameterTuningJobStrategyType = "Bayesian"|"Random"|string;
+  export interface HyperParameterTuningJobStrategyConfig {
+    /**
+     * The configuration for the object that specifies the Hyperband strategy. This parameter is only supported for the Hyperband selection for Strategy within the HyperParameterTuningJobConfig API.
+     */
+    HyperbandStrategyConfig?: HyperbandStrategyConfig;
+  }
+  export type HyperParameterTuningJobStrategyType = "Bayesian"|"Random"|"Hyperband"|string;
   export type HyperParameterTuningJobSummaries = HyperParameterTuningJobSummary[];
   export interface HyperParameterTuningJobSummary {
     /**
@@ -10246,7 +10462,7 @@ declare namespace SageMaker {
      */
     HyperParameterTuningJobStatus: HyperParameterTuningJobStatus;
     /**
-     * Specifies the search strategy hyperparameter tuning uses to choose which hyperparameters to use for each iteration. Currently, the only valid value is Bayesian.
+     * Specifies the search strategy hyperparameter tuning uses to choose which hyperparameters to evaluate at each iteration.
      */
     Strategy: HyperParameterTuningJobStrategyType;
     /**
@@ -10313,6 +10529,18 @@ declare namespace SageMaker {
   }
   export type HyperParameterValue = string;
   export type HyperParameters = {[key: string]: HyperParameterValue};
+  export interface HyperbandStrategyConfig {
+    /**
+     * The minimum number of resources (such as epochs) that can be used by a training job launched by a hyperparameter tuning job. If the value for MinResource has not been reached, the training job will not be stopped by Hyperband.
+     */
+    MinResource?: HyperbandStrategyMinResource;
+    /**
+     * The maximum number of resources (such as epochs) that can be used by a training job launched by a hyperparameter tuning job. Once a job reaches the MaxResource value, it is stopped. If a value for MaxResource is not provided, and Hyperband is selected as the hyperparameter tuning strategy, HyperbandTrainingJ attempts to infer MaxResource from the following keys (if present) in StaticsHyperParameters:    epochs     numepochs     n-epochs     n_epochs     num_epochs    If HyperbandStrategyConfig is unable to infer a value for MaxResource, it generates a validation error. The maximum value is 20,000 epochs. All metrics that correspond to an objective metric are used to derive early stopping decisions. For distributive training jobs, ensure that duplicate metrics are not printed in the logs across the individual nodes in a training job. If multiple nodes are publishing duplicate or incorrect metrics, training jobs may make an incorrect stopping decision and stop the job prematurely. 
+     */
+    MaxResource?: HyperbandStrategyMaxResource;
+  }
+  export type HyperbandStrategyMaxResource = number;
+  export type HyperbandStrategyMinResource = number;
   export type IdempotencyToken = string;
   export interface Image {
     /**
@@ -10596,6 +10824,7 @@ declare namespace SageMaker {
      */
     LifecycleConfigArns?: LifecycleConfigArns;
   }
+  export type KeepAlivePeriodInSeconds = number;
   export type KernelDisplayName = string;
   export interface KernelGatewayAppSettings {
     /**
@@ -13205,6 +13434,10 @@ declare namespace SageMaker {
      * The sort order for results. The default is Ascending.
      */
     SortOrder?: SortOrder;
+    /**
+     * A filter that retrieves only training jobs with a specific warm pool status.
+     */
+    WarmPoolStatusEquals?: WarmPoolResourceStatus;
   }
   export interface ListTrainingJobsResponse {
     /**
@@ -15519,8 +15752,21 @@ declare namespace SageMaker {
      * The serverless configuration for an endpoint. Specifies a serverless endpoint configuration instead of an instance-based endpoint configuration.
      */
     ServerlessConfig?: ProductionVariantServerlessConfig;
+    /**
+     * The size, in GB, of the ML storage volume attached to individual inference instance associated with the production variant. Currenly only Amazon EBS gp2 storage volumes are supported.
+     */
+    VolumeSizeInGB?: ProductionVariantVolumeSizeInGB;
+    /**
+     * The timeout value, in seconds, to download and extract the model that you want to host from Amazon S3 to the individual inference instance associated with this production variant.
+     */
+    ModelDataDownloadTimeoutInSeconds?: ProductionVariantModelDataDownloadTimeoutInSeconds;
+    /**
+     * The timeout value, in seconds, for your inference container to pass health check by SageMaker Hosting. For more information about health check, see How Your Container Should Respond to Health Check (Ping) Requests.
+     */
+    ContainerStartupHealthCheckTimeoutInSeconds?: ProductionVariantContainerStartupHealthCheckTimeoutInSeconds;
   }
   export type ProductionVariantAcceleratorType = "ml.eia1.medium"|"ml.eia1.large"|"ml.eia1.xlarge"|"ml.eia2.medium"|"ml.eia2.large"|"ml.eia2.xlarge"|string;
+  export type ProductionVariantContainerStartupHealthCheckTimeoutInSeconds = number;
   export interface ProductionVariantCoreDumpConfig {
     /**
      * The Amazon S3 bucket to send the core dump to.
@@ -15533,6 +15779,7 @@ declare namespace SageMaker {
   }
   export type ProductionVariantInstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.m5d.large"|"ml.m5d.xlarge"|"ml.m5d.2xlarge"|"ml.m5d.4xlarge"|"ml.m5d.12xlarge"|"ml.m5d.24xlarge"|"ml.c4.large"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.large"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.12xlarge"|"ml.r5.24xlarge"|"ml.r5d.large"|"ml.r5d.xlarge"|"ml.r5d.2xlarge"|"ml.r5d.4xlarge"|"ml.r5d.12xlarge"|"ml.r5d.24xlarge"|"ml.inf1.xlarge"|"ml.inf1.2xlarge"|"ml.inf1.6xlarge"|"ml.inf1.24xlarge"|"ml.c6i.large"|"ml.c6i.xlarge"|"ml.c6i.2xlarge"|"ml.c6i.4xlarge"|"ml.c6i.8xlarge"|"ml.c6i.12xlarge"|"ml.c6i.16xlarge"|"ml.c6i.24xlarge"|"ml.c6i.32xlarge"|"ml.g5.xlarge"|"ml.g5.2xlarge"|"ml.g5.4xlarge"|"ml.g5.8xlarge"|"ml.g5.12xlarge"|"ml.g5.16xlarge"|"ml.g5.24xlarge"|"ml.g5.48xlarge"|"ml.p4d.24xlarge"|string;
   export type ProductionVariantList = ProductionVariant[];
+  export type ProductionVariantModelDataDownloadTimeoutInSeconds = number;
   export interface ProductionVariantServerlessConfig {
     /**
      * The memory size of your serverless endpoint. Valid values are in 1 GB increments: 1024 MB, 2048 MB, 3072 MB, 4096 MB, 5120 MB, or 6144 MB.
@@ -15597,6 +15844,7 @@ declare namespace SageMaker {
     DesiredServerlessConfig?: ProductionVariantServerlessConfig;
   }
   export type ProductionVariantSummaryList = ProductionVariantSummary[];
+  export type ProductionVariantVolumeSizeInGB = number;
   export interface ProfilerConfig {
     /**
      * Path to Amazon S3 storage location for system and framework metrics.
@@ -16235,6 +16483,16 @@ declare namespace SageMaker {
      * The configuration of a heterogeneous cluster in JSON format.
      */
     InstanceGroups?: InstanceGroups;
+    /**
+     * The duration of time in seconds to retain configured resources in a warm pool for subsequent training jobs.
+     */
+    KeepAlivePeriodInSeconds?: KeepAlivePeriodInSeconds;
+  }
+  export interface ResourceConfigForUpdate {
+    /**
+     * The KeepAlivePeriodInSeconds value specified in the ResourceConfig to update.
+     */
+    KeepAlivePeriodInSeconds: KeepAlivePeriodInSeconds;
   }
   export type ResourceId = string;
   export interface ResourceLimits {
@@ -16249,6 +16507,7 @@ declare namespace SageMaker {
   }
   export type ResourcePolicyString = string;
   export type ResourcePropertyName = string;
+  export type ResourceRetainedBillableTimeInSeconds = number;
   export interface ResourceSpec {
     /**
      * The ARN of the SageMaker image that the image version belongs to.
@@ -16267,7 +16526,7 @@ declare namespace SageMaker {
      */
     LifecycleConfigArn?: StudioLifecycleConfigArn;
   }
-  export type ResourceType = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup"|"Project"|"FeatureMetadata"|string;
+  export type ResourceType = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup"|"Project"|"FeatureMetadata"|"HyperParameterTuningJob"|string;
   export type ResponseMIMEType = string;
   export type ResponseMIMETypes = ResponseMIMEType[];
   export interface RetentionPolicy {
@@ -16407,6 +16666,10 @@ declare namespace SageMaker {
      * The feature metadata used to search through the features.
      */
     FeatureMetadata?: FeatureMetadata;
+    /**
+     * The properties of a hyperparameter tuning job.
+     */
+    HyperParameterTuningJob?: HyperParameterTuningJobSearchEntity;
   }
   export interface SearchRequest {
     /**
@@ -16912,6 +17175,16 @@ declare namespace SageMaker {
   export type TenthFractionsOfACent = number;
   export type TerminationWaitInSeconds = number;
   export type ThingName = string;
+  export interface TimeSeriesForecastingSettings {
+    /**
+     * Describes whether time series forecasting is enabled or disabled in the Canvas app.
+     */
+    Status?: FeatureStatus;
+    /**
+     * The IAM role that Canvas passes to Amazon Forecast for time series forecasting. By default, Canvas uses the execution role specified in the UserProfile that launches the Canvas app. If an execution role is not specified in the UserProfile, Canvas uses the execution role specified in the Domain that owns the UserProfile. To allow time series forecasting, this IAM role should have the  AmazonSageMakerCanvasForecastAccess policy attached and forecast.amazonaws.com added in the trust relationship as a service principal.
+     */
+    AmazonForecastRoleArn?: RoleArn;
+  }
   export type Timestamp = Date;
   export type TrafficDurationInSeconds = number;
   export interface TrafficPattern {
@@ -17172,6 +17445,10 @@ declare namespace SageMaker {
      * The status of the training job.
      */
     TrainingJobStatus: TrainingJobStatus;
+    /**
+     * The status of the warm pool associated with the training job.
+     */
+    WarmPoolStatus?: WarmPoolStatus;
   }
   export interface TrainingSpecification {
     /**
@@ -18302,6 +18579,10 @@ declare namespace SageMaker {
      * Configuration information for Debugger rules for profiling system and framework metrics.
      */
     ProfilerRuleConfigurations?: ProfilerRuleConfigurations;
+    /**
+     * The training job ResourceConfig to update warm pool retention length.
+     */
+    ResourceConfig?: ResourceConfigForUpdate;
   }
   export interface UpdateTrainingJobResponse {
     /**
@@ -18520,6 +18801,10 @@ declare namespace SageMaker {
      * A collection of settings that configure the RSessionGateway app.
      */
     RSessionAppSettings?: RSessionAppSettings;
+    /**
+     * The Canvas app settings.
+     */
+    CanvasAppSettings?: CanvasAppSettings;
   }
   export type ValidationFraction = number;
   export type VariantName = string;
@@ -18565,6 +18850,21 @@ declare namespace SageMaker {
   export type VpcId = string;
   export type VpcSecurityGroupIds = SecurityGroupId[];
   export type WaitIntervalInSeconds = number;
+  export type WarmPoolResourceStatus = "Available"|"Terminated"|"Reused"|"InUse"|string;
+  export interface WarmPoolStatus {
+    /**
+     * The status of the warm pool.    InUse: The warm pool is in use for the training job.    Available: The warm pool is available to reuse for a matching training job.    Reused: The warm pool moved to a matching training job for reuse.    Terminated: The warm pool is no longer available. Warm pools are unavailable if they are terminated by a user, terminated for a patch update, or terminated for exceeding the specified KeepAlivePeriodInSeconds.  
+     */
+    Status: WarmPoolResourceStatus;
+    /**
+     * The billable time in seconds used by the warm pool. Billable time refers to the absolute wall-clock time. Multiply ResourceRetainedBillableTimeInSeconds by the number of instances (InstanceCount) in your training cluster to get the total compute time SageMaker bills you if you run warm pool training. The formula is as follows: ResourceRetainedBillableTimeInSeconds * InstanceCount.
+     */
+    ResourceRetainedBillableTimeInSeconds?: ResourceRetainedBillableTimeInSeconds;
+    /**
+     * The name of the matching training job that reused the warm pool.
+     */
+    ReusedByJob?: TrainingJobName;
+  }
   export interface Workforce {
     /**
      * The name of the private workforce.

@@ -29,19 +29,19 @@ declare class Transfer extends Service {
    */
   createAgreement(callback?: (err: AWSError, data: Transfer.Types.CreateAgreementResponse) => void): Request<Transfer.Types.CreateAgreementResponse, AWSError>;
   /**
-   * Creates the connector, which captures the parameters for an outbound connection for the AS2 protocol. The connector is required for sending files from a customer's non Amazon Web Services server. 
+   * Creates the connector, which captures the parameters for an outbound connection for the AS2 protocol. The connector is required for sending files to an externally hosted AS2 server. For more details about connectors, see Create AS2 connectors.
    */
   createConnector(params: Transfer.Types.CreateConnectorRequest, callback?: (err: AWSError, data: Transfer.Types.CreateConnectorResponse) => void): Request<Transfer.Types.CreateConnectorResponse, AWSError>;
   /**
-   * Creates the connector, which captures the parameters for an outbound connection for the AS2 protocol. The connector is required for sending files from a customer's non Amazon Web Services server. 
+   * Creates the connector, which captures the parameters for an outbound connection for the AS2 protocol. The connector is required for sending files to an externally hosted AS2 server. For more details about connectors, see Create AS2 connectors.
    */
   createConnector(callback?: (err: AWSError, data: Transfer.Types.CreateConnectorResponse) => void): Request<Transfer.Types.CreateConnectorResponse, AWSError>;
   /**
-   * Creates the profile for the AS2 process. The agreement is between the partner and the AS2 process.
+   * Creates the local or partner profile to use for AS2 transfers.
    */
   createProfile(params: Transfer.Types.CreateProfileRequest, callback?: (err: AWSError, data: Transfer.Types.CreateProfileResponse) => void): Request<Transfer.Types.CreateProfileResponse, AWSError>;
   /**
-   * Creates the profile for the AS2 process. The agreement is between the partner and the AS2 process.
+   * Creates the local or partner profile to use for AS2 transfers.
    */
   createProfile(callback?: (err: AWSError, data: Transfer.Types.CreateProfileResponse) => void): Request<Transfer.Types.CreateProfileResponse, AWSError>;
   /**
@@ -100,6 +100,14 @@ declare class Transfer extends Service {
    * Deletes the agreement that's specified in the provided ConnectorId.
    */
   deleteConnector(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
+  /**
+   * Deletes the host key that's specified in the HoskKeyId parameter.
+   */
+  deleteHostKey(params: Transfer.Types.DeleteHostKeyRequest, callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
+  /**
+   * Deletes the host key that's specified in the HoskKeyId parameter.
+   */
+  deleteHostKey(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
    * Deletes the profile that's specified in the ProfileId parameter.
    */
@@ -181,6 +189,14 @@ declare class Transfer extends Service {
    */
   describeExecution(callback?: (err: AWSError, data: Transfer.Types.DescribeExecutionResponse) => void): Request<Transfer.Types.DescribeExecutionResponse, AWSError>;
   /**
+   * Returns the details of the host key that's specified by the HostKeyId and ServerId.
+   */
+  describeHostKey(params: Transfer.Types.DescribeHostKeyRequest, callback?: (err: AWSError, data: Transfer.Types.DescribeHostKeyResponse) => void): Request<Transfer.Types.DescribeHostKeyResponse, AWSError>;
+  /**
+   * Returns the details of the host key that's specified by the HostKeyId and ServerId.
+   */
+  describeHostKey(callback?: (err: AWSError, data: Transfer.Types.DescribeHostKeyResponse) => void): Request<Transfer.Types.DescribeHostKeyResponse, AWSError>;
+  /**
    * Returns the details of the profile that's specified by the ProfileId.
    */
   describeProfile(params: Transfer.Types.DescribeProfileRequest, callback?: (err: AWSError, data: Transfer.Types.DescribeProfileResponse) => void): Request<Transfer.Types.DescribeProfileResponse, AWSError>;
@@ -229,6 +245,14 @@ declare class Transfer extends Service {
    */
   importCertificate(callback?: (err: AWSError, data: Transfer.Types.ImportCertificateResponse) => void): Request<Transfer.Types.ImportCertificateResponse, AWSError>;
   /**
+   * Adds a host key to the server that's specified by the ServerId parameter.
+   */
+  importHostKey(params: Transfer.Types.ImportHostKeyRequest, callback?: (err: AWSError, data: Transfer.Types.ImportHostKeyResponse) => void): Request<Transfer.Types.ImportHostKeyResponse, AWSError>;
+  /**
+   * Adds a host key to the server that's specified by the ServerId parameter.
+   */
+  importHostKey(callback?: (err: AWSError, data: Transfer.Types.ImportHostKeyResponse) => void): Request<Transfer.Types.ImportHostKeyResponse, AWSError>;
+  /**
    * Adds a Secure Shell (SSH) public key to a user account identified by a UserName value assigned to the specific file transfer protocol-enabled server, identified by ServerId. The response returns the UserName value, the ServerId value, and the name of the SshPublicKeyId.
    */
   importSshPublicKey(params: Transfer.Types.ImportSshPublicKeyRequest, callback?: (err: AWSError, data: Transfer.Types.ImportSshPublicKeyResponse) => void): Request<Transfer.Types.ImportSshPublicKeyResponse, AWSError>;
@@ -276,6 +300,14 @@ declare class Transfer extends Service {
    * Lists all executions for the specified workflow.
    */
   listExecutions(callback?: (err: AWSError, data: Transfer.Types.ListExecutionsResponse) => void): Request<Transfer.Types.ListExecutionsResponse, AWSError>;
+  /**
+   * Returns a list of host keys for the server that's specified by the ServerId parameter.
+   */
+  listHostKeys(params: Transfer.Types.ListHostKeysRequest, callback?: (err: AWSError, data: Transfer.Types.ListHostKeysResponse) => void): Request<Transfer.Types.ListHostKeysResponse, AWSError>;
+  /**
+   * Returns a list of host keys for the server that's specified by the ServerId parameter.
+   */
+  listHostKeys(callback?: (err: AWSError, data: Transfer.Types.ListHostKeysResponse) => void): Request<Transfer.Types.ListHostKeysResponse, AWSError>;
   /**
    * Returns a list of the profiles for your system. If you want to limit the results to a certain number, supply a value for the MaxResults parameter. If you ran the command previously and received a value for NextToken, you can supply that value to continue listing profiles from where you left off.
    */
@@ -333,11 +365,11 @@ declare class Transfer extends Service {
    */
   sendWorkflowStepState(callback?: (err: AWSError, data: Transfer.Types.SendWorkflowStepStateResponse) => void): Request<Transfer.Types.SendWorkflowStepStateResponse, AWSError>;
   /**
-   * Begins an outbound file transfer. You specify the ConnectorId and the file paths for where to send the files. 
+   * Begins an outbound file transfer to a remote AS2 server. You specify the ConnectorId and the file paths for where to send the files. 
    */
   startFileTransfer(params: Transfer.Types.StartFileTransferRequest, callback?: (err: AWSError, data: Transfer.Types.StartFileTransferResponse) => void): Request<Transfer.Types.StartFileTransferResponse, AWSError>;
   /**
-   * Begins an outbound file transfer. You specify the ConnectorId and the file paths for where to send the files. 
+   * Begins an outbound file transfer to a remote AS2 server. You specify the ConnectorId and the file paths for where to send the files. 
    */
   startFileTransfer(callback?: (err: AWSError, data: Transfer.Types.StartFileTransferResponse) => void): Request<Transfer.Types.StartFileTransferResponse, AWSError>;
   /**
@@ -412,6 +444,14 @@ declare class Transfer extends Service {
    * Updates some of the parameters for an existing connector. Provide the ConnectorId for the connector that you want to update, along with the new values for the parameters to update.
    */
   updateConnector(callback?: (err: AWSError, data: Transfer.Types.UpdateConnectorResponse) => void): Request<Transfer.Types.UpdateConnectorResponse, AWSError>;
+  /**
+   * Updates the description for the host key that's specified by the ServerId and HostKeyId parameters.
+   */
+  updateHostKey(params: Transfer.Types.UpdateHostKeyRequest, callback?: (err: AWSError, data: Transfer.Types.UpdateHostKeyResponse) => void): Request<Transfer.Types.UpdateHostKeyResponse, AWSError>;
+  /**
+   * Updates the description for the host key that's specified by the ServerId and HostKeyId parameters.
+   */
+  updateHostKey(callback?: (err: AWSError, data: Transfer.Types.UpdateHostKeyResponse) => void): Request<Transfer.Types.UpdateHostKeyResponse, AWSError>;
   /**
    * Updates some of the parameters for an existing profile. Provide the ProfileId for the profile that you want to update, along with the new values for the parameters to update.
    */
@@ -560,11 +600,11 @@ declare namespace Transfer {
   }
   export interface CreateAccessResponse {
     /**
-     * The ID of the server that the user is attached to.
+     * The identifier of the server that the user is attached to.
      */
     ServerId: ServerId;
     /**
-     * The external ID of the group whose users have access to your Amazon S3 or Amazon EFS resources over the enabled protocols using Transfer Family.
+     * The external identifier of the group whose users have access to your Amazon S3 or Amazon EFS resources over the enabled protocols using Transfer Family.
      */
     ExternalId: ExternalId;
   }
@@ -586,7 +626,7 @@ declare namespace Transfer {
      */
     PartnerProfileId: ProfileId;
     /**
-     * The landing directory (folder) for files transferred by using the AS2 protocol. A BaseDirectory example is /DOC-EXAMPLE-BUCKET/home/mydirectory .
+     * The landing directory (folder) for files transferred by using the AS2 protocol. A BaseDirectory example is DOC-EXAMPLE-BUCKET/home/mydirectory.
      */
     BaseDirectory: HomeDirectory;
     /**
@@ -642,7 +682,7 @@ declare namespace Transfer {
      */
     As2Id: As2Id;
     /**
-     * Indicates whether to list only LOCAL type profiles or only PARTNER type profiles. If not supplied in the request, the command lists all types of profiles.
+     * Determines the type of profile to create:   Specify LOCAL to create a local profile. A local profile represents the AS2-enabled Transfer Family server organization or party.   Specify PARTNER to create a partner profile. A partner profile represents a remote organization, external to Transfer Family.  
      */
     ProfileType: ProfileType;
     /**
@@ -678,7 +718,7 @@ declare namespace Transfer {
      */
     EndpointType?: EndpointType;
     /**
-     * The RSA, ECDSA, or ED25519 private key to use for your server. Use the following command to generate an RSA 2048 bit key with no passphrase:  ssh-keygen -t rsa -b 2048 -N "" -m PEM -f my-new-server-key. Use a minimum value of 2048 for the -b option. You can create a stronger key by using 3072 or 4096. Use the following command to generate an ECDSA 256 bit key with no passphrase:  ssh-keygen -t ecdsa -b 256 -N "" -m PEM -f my-new-server-key. Valid values for the -b option for ECDSA are 256, 384, and 521. Use the following command to generate an ED25519 key with no passphrase:  ssh-keygen -t ed25519 -N "" -f my-new-server-key. For all of these commands, you can replace my-new-server-key with a string of your choice.  If you aren't planning to migrate existing users from an existing SFTP-enabled server to a new server, don't update the host key. Accidentally changing a server's host key can be disruptive.  For more information, see Change the host key for your SFTP-enabled server in the Transfer Family User Guide.
+     * The RSA, ECDSA, or ED25519 private key to use for your SFTP-enabled server. You can add multiple host keys, in case you want to rotate keys, or have a set of active keys that use different algorithms. Use the following command to generate an RSA 2048 bit key with no passphrase:  ssh-keygen -t rsa -b 2048 -N "" -m PEM -f my-new-server-key. Use a minimum value of 2048 for the -b option. You can create a stronger key by using 3072 or 4096. Use the following command to generate an ECDSA 256 bit key with no passphrase:  ssh-keygen -t ecdsa -b 256 -N "" -m PEM -f my-new-server-key. Valid values for the -b option for ECDSA are 256, 384, and 521. Use the following command to generate an ED25519 key with no passphrase:  ssh-keygen -t ed25519 -N "" -f my-new-server-key. For all of these commands, you can replace my-new-server-key with a string of your choice.  If you aren't planning to migrate existing users from an existing SFTP-enabled server to a new server, don't update the host key. Accidentally changing a server's host key can be disruptive.  For more information, see Update host keys for your SFTP-enabled server in the Transfer Family User Guide.
      */
     HostKey?: HostKey;
     /**
@@ -718,13 +758,13 @@ declare namespace Transfer {
      */
     Tags?: Tags;
     /**
-     * Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow.
+     * Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow. In additon to a workflow to execute when a file is uploaded completely, WorkflowDeatails can also contain a workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when the session disconnects.
      */
     WorkflowDetails?: WorkflowDetails;
   }
   export interface CreateServerResponse {
     /**
-     * The service-assigned ID of the server that is created.
+     * The service-assigned identifier of the server that is created.
      */
     ServerId: ServerId;
   }
@@ -772,7 +812,7 @@ declare namespace Transfer {
   }
   export interface CreateUserResponse {
     /**
-     * The ID of the server that the user is attached to.
+     * The identifier of the server that the user is attached to.
      */
     ServerId: ServerId;
     /**
@@ -842,13 +882,13 @@ declare namespace Transfer {
      */
     AgreementId: AgreementId;
     /**
-     * The server ID associated with the agreement that you are deleting.
+     * The server identifier associated with the agreement that you are deleting.
      */
     ServerId: ServerId;
   }
   export interface DeleteCertificateRequest {
     /**
-     * The ID of the certificate object that you are deleting.
+     * The identifier of the certificate object that you are deleting.
      */
     CertificateId: CertificateId;
   }
@@ -858,9 +898,19 @@ declare namespace Transfer {
      */
     ConnectorId: ConnectorId;
   }
+  export interface DeleteHostKeyRequest {
+    /**
+     * The identifier of the server that contains the host key that you are deleting.
+     */
+    ServerId: ServerId;
+    /**
+     * The identifier of the host key that you are deleting.
+     */
+    HostKeyId: HostKeyId;
+  }
   export interface DeleteProfileRequest {
     /**
-     * The ID of the profile that you are deleting.
+     * The identifier of the profile that you are deleting.
      */
     ProfileId: ProfileId;
   }
@@ -926,7 +976,7 @@ declare namespace Transfer {
      */
     ServerId: ServerId;
     /**
-     * The external ID of the server that the access is attached to.
+     * The external identifier of the server that the access is attached to.
      */
     Access: DescribedAccess;
   }
@@ -936,7 +986,7 @@ declare namespace Transfer {
      */
     AgreementId: AgreementId;
     /**
-     * The server ID that's associated with the agreement.
+     * The server identifier that's associated with the agreement.
      */
     ServerId: ServerId;
   }
@@ -989,6 +1039,22 @@ declare namespace Transfer {
      * The structure that contains the details of the workflow' execution.
      */
     Execution: DescribedExecution;
+  }
+  export interface DescribeHostKeyRequest {
+    /**
+     * The identifier of the server that contains the host key that you want described.
+     */
+    ServerId: ServerId;
+    /**
+     * The identifier of the host key that you want described.
+     */
+    HostKeyId: HostKeyId;
+  }
+  export interface DescribeHostKeyResponse {
+    /**
+     * Returns the details for the specified host key.
+     */
+    HostKey: DescribedHostKey;
   }
   export interface DescribeProfileRequest {
     /**
@@ -1246,6 +1312,36 @@ declare namespace Transfer {
      */
     Results?: ExecutionResults;
   }
+  export interface DescribedHostKey {
+    /**
+     * The unique Amazon Resource Name (ARN) for the host key.
+     */
+    Arn: Arn;
+    /**
+     * A unique identifier for the host key.
+     */
+    HostKeyId?: HostKeyId;
+    /**
+     * The public key fingerprint, which is a short sequence of bytes used to identify the longer public key.
+     */
+    HostKeyFingerprint?: HostKeyFingerprint;
+    /**
+     * The text description for this host key.
+     */
+    Description?: HostKeyDescription;
+    /**
+     * The encryption algorithm that is used for the host key. The Type parameter is specified by using one of the following values:    ssh-rsa     ssh-ed25519     ecdsa-sha2-nistp256     ecdsa-sha2-nistp384     ecdsa-sha2-nistp521   
+     */
+    Type?: HostKeyType;
+    /**
+     * The date on which the host key was added to the server.
+     */
+    DateImported?: DateImported;
+    /**
+     * Key-value pairs that can be used to group and search for host keys.
+     */
+    Tags?: Tags;
+  }
   export interface DescribedProfile {
     /**
      * The unique Amazon Resource Name (ARN) for the profile.
@@ -1372,7 +1468,7 @@ declare namespace Transfer {
      */
     UserCount?: UserCount;
     /**
-     * Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow.
+     * Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow. In additon to a workflow to execute when a file is uploaded completely, WorkflowDeatails can also contain a workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when the session disconnects.
      */
     WorkflowDetails?: WorkflowDetails;
   }
@@ -1449,7 +1545,7 @@ declare namespace Transfer {
   export type Domain = "S3"|"EFS"|string;
   export interface EfsFileLocation {
     /**
-     * The ID of the file system, assigned by Amazon EFS.
+     * The identifier of the file system, assigned by Amazon EFS.
      */
     FileSystemId?: EfsFileSystemId;
     /**
@@ -1470,11 +1566,11 @@ declare namespace Transfer {
      */
     SubnetIds?: SubnetIds;
     /**
-     * The ID of the VPC endpoint.  This property can only be set when EndpointType is set to VPC_ENDPOINT. For more information, see https://docs.aws.amazon.com/transfer/latest/userguide/create-server-in-vpc.html#deprecate-vpc-endpoint. 
+     * The identifier of the VPC endpoint.  This property can only be set when EndpointType is set to VPC_ENDPOINT. For more information, see https://docs.aws.amazon.com/transfer/latest/userguide/create-server-in-vpc.html#deprecate-vpc-endpoint. 
      */
     VpcEndpointId?: VpcEndpointId;
     /**
-     * The VPC ID of the VPC in which a server's endpoint will be hosted.  This property can only be set when EndpointType is set to VPC. 
+     * The VPC identifier of the VPC in which a server's endpoint will be hosted.  This property can only be set when EndpointType is set to VPC. 
      */
     VpcId?: VpcId;
     /**
@@ -1529,7 +1625,7 @@ declare namespace Transfer {
      */
     S3FileLocation?: S3FileLocation;
     /**
-     * Specifies the Amazon EFS ID and the path for the file being used.
+     * Specifies the Amazon EFS identifier and the path for the file being used.
      */
     EfsFileLocation?: EfsFileLocation;
   }
@@ -1551,7 +1647,10 @@ declare namespace Transfer {
   export type HomeDirectoryMappings = HomeDirectoryMapEntry[];
   export type HomeDirectoryType = "PATH"|"LOGICAL"|string;
   export type HostKey = string;
+  export type HostKeyDescription = string;
   export type HostKeyFingerprint = string;
+  export type HostKeyId = string;
+  export type HostKeyType = string;
   export interface IdentityProviderDetails {
     /**
      * Provides the location of the service endpoint used to authenticate users.
@@ -1610,6 +1709,34 @@ declare namespace Transfer {
      * An array of identifiers for the imported certificates. You use this identifier for working with profiles and partner profiles.
      */
     CertificateId: CertificateId;
+  }
+  export interface ImportHostKeyRequest {
+    /**
+     * The identifier of the server that contains the host key that you are importing.
+     */
+    ServerId: ServerId;
+    /**
+     * The public key portion of an SSH key pair. Transfer Family accepts RSA, ECDSA, and ED25519 keys.
+     */
+    HostKeyBody: HostKey;
+    /**
+     * The text description that identifies this host key.
+     */
+    Description?: HostKeyDescription;
+    /**
+     * Key-value pairs that can be used to group and search for host keys.
+     */
+    Tags?: Tags;
+  }
+  export interface ImportHostKeyResponse {
+    /**
+     * Returns the server identifier that contains the imported key.
+     */
+    ServerId: ServerId;
+    /**
+     * Returns the host key identifier for the imported key.
+     */
+    HostKeyId: HostKeyId;
   }
   export interface ImportSshPublicKeyRequest {
     /**
@@ -1768,6 +1895,34 @@ declare namespace Transfer {
      * Returns the details for each execution.    NextToken: returned from a call to several APIs, you can use pass it to a subsequent command to continue listing additional executions.    StartTime: timestamp indicating when the execution began.    Executions: details of the execution, including the execution ID, initial file location, and Service metadata.    Status: one of the following values: IN_PROGRESS, COMPLETED, EXCEPTION, HANDLING_EXEPTION.   
      */
     Executions: ListedExecutions;
+  }
+  export interface ListHostKeysRequest {
+    /**
+     * The maximum number of host keys to return.
+     */
+    MaxResults?: MaxResults;
+    /**
+     * When there are additional results that were not returned, a NextToken parameter is returned. You can use that value for a subsequent call to ListHostKeys to continue listing results.
+     */
+    NextToken?: NextToken;
+    /**
+     * The identifier of the server that contains the host keys that you want to view.
+     */
+    ServerId: ServerId;
+  }
+  export interface ListHostKeysResponse {
+    /**
+     * Returns a token that you can use to call ListHostKeys again and receive additional results, if there are any.
+     */
+    NextToken?: NextToken;
+    /**
+     * Returns the server identifier that contains the listed host keys.
+     */
+    ServerId: ServerId;
+    /**
+     * Returns an array, where each item contains the details of a host key.
+     */
+    HostKeys: ListedHostKeys;
   }
   export interface ListProfilesRequest {
     /**
@@ -2028,6 +2183,33 @@ declare namespace Transfer {
     Status?: ExecutionStatus;
   }
   export type ListedExecutions = ListedExecution[];
+  export interface ListedHostKey {
+    /**
+     * The unique Amazon Resource Name (ARN) of the host key.
+     */
+    Arn: Arn;
+    /**
+     * A unique identifier for the host key.
+     */
+    HostKeyId?: HostKeyId;
+    /**
+     * The public key fingerprint, which is a short sequence of bytes used to identify the longer public key.
+     */
+    Fingerprint?: HostKeyFingerprint;
+    /**
+     * The current description for the host key. You can change it by calling the UpdateHostKey operation and providing a new description.
+     */
+    Description?: HostKeyDescription;
+    /**
+     * The encryption algorithm that is used for the host key. The Type parameter is specified by using one of the following values:    ssh-rsa     ssh-ed25519     ecdsa-sha2-nistp256     ecdsa-sha2-nistp384     ecdsa-sha2-nistp521   
+     */
+    Type?: HostKeyType;
+    /**
+     * The date on which the host key was added to the server.
+     */
+    DateImported?: DateImported;
+  }
+  export type ListedHostKeys = ListedHostKey[];
   export interface ListedProfile {
     /**
      * The Amazon Resource Name (ARN) of the specified profile.
@@ -2144,6 +2326,7 @@ declare namespace Transfer {
   export type MessageSubject = string;
   export type NextToken = string;
   export type NullableRole = string;
+  export type OnPartialUploadWorkflowDetails = WorkflowDetail[];
   export type OnUploadWorkflowDetails = WorkflowDetail[];
   export type OverwriteExisting = "TRUE"|"FALSE"|string;
   export type PassiveIp = string;
@@ -2171,7 +2354,7 @@ declare namespace Transfer {
   export type Protocol = "SFTP"|"FTP"|"FTPS"|"AS2"|string;
   export interface ProtocolDetails {
     /**
-     *  Indicates passive mode, for FTP and FTPS protocols. Enter a single IPv4 address, such as the public IP address of a firewall, router, or load balancer. For example:    aws transfer update-server --protocol-details PassiveIp=0.0.0.0   Replace  0.0.0.0  in the example above with the actual IP address you want to use.   If you change the PassiveIp value, you must stop and then restart your Transfer Family server for the change to take effect. For details on using passive mode (PASV) in a NAT environment, see Configuring your FTPS server behind a firewall or NAT with Transfer Family.  
+     *  Indicates passive mode, for FTP and FTPS protocols. Enter a single IPv4 address, such as the public IP address of a firewall, router, or load balancer. For example:   aws transfer update-server --protocol-details PassiveIp=0.0.0.0  Replace 0.0.0.0 in the example above with the actual IP address you want to use.   If you change the PassiveIp value, you must stop and then restart your Transfer Family server for the change to take effect. For details on using passive mode (PASV) in a NAT environment, see Configuring your FTPS server behind a firewall or NAT with Transfer Family.    Special values  The AUTO and 0.0.0.0 are special values for the PassiveIp parameter. The value PassiveIp=AUTO is assigned by default to FTP and FTPS type servers. In this case, the server automatically responds with one of the endpoint IPs within the PASV response. PassiveIp=0.0.0.0 has a more unique application for its usage. For example, if you have a High Availability (HA) Network Load Balancer (NLB) environment, where you have 3 subnets, you can only specify a single IP address using the PassiveIp parameter. This reduces the effectiveness of having High Availability. In this case, you can specify PassiveIp=0.0.0.0. This tells the client to use the same IP address as the Control connection and utilize all AZs for their connections. Note, however, that not all FTP clients support the PassiveIp=0.0.0.0 response. FileZilla and WinSCP do support it. If you are using other clients, check to see if your client supports the PassiveIp=0.0.0.0 response.
      */
     PassiveIp?: PassiveIp;
     /**
@@ -2448,11 +2631,11 @@ declare namespace Transfer {
   }
   export interface UpdateAccessResponse {
     /**
-     * The ID of the server that the user is attached to.
+     * The identifier of the server that the user is attached to.
      */
     ServerId: ServerId;
     /**
-     * The external ID of the group whose users have access to your Amazon S3 or Amazon EFS resources over the enabled protocols using Amazon Web ServicesTransfer Family.
+     * The external identifier of the group whose users have access to your Amazon S3 or Amazon EFS resources over the enabled protocols using Amazon Web ServicesTransfer Family.
      */
     ExternalId: ExternalId;
   }
@@ -2548,6 +2731,30 @@ declare namespace Transfer {
      */
     ConnectorId: ConnectorId;
   }
+  export interface UpdateHostKeyRequest {
+    /**
+     * The identifier of the server that contains the host key that you are updating.
+     */
+    ServerId: ServerId;
+    /**
+     * The identifier of the host key that you are updating.
+     */
+    HostKeyId: HostKeyId;
+    /**
+     * An updated description for the host key.
+     */
+    Description: HostKeyDescription;
+  }
+  export interface UpdateHostKeyResponse {
+    /**
+     * Returns the server identifier for the server that contains the updated host key.
+     */
+    ServerId: ServerId;
+    /**
+     * Returns the host key identifier for the updated host key.
+     */
+    HostKeyId: HostKeyId;
+  }
   export interface UpdateProfileRequest {
     /**
      * The identifier of the profile object that you are updating.
@@ -2582,7 +2789,7 @@ declare namespace Transfer {
      */
     EndpointType?: EndpointType;
     /**
-     * The RSA, ECDSA, or ED25519 private key to use for your server. Use the following command to generate an RSA 2048 bit key with no passphrase:  ssh-keygen -t rsa -b 2048 -N "" -m PEM -f my-new-server-key. Use a minimum value of 2048 for the -b option. You can create a stronger key by using 3072 or 4096. Use the following command to generate an ECDSA 256 bit key with no passphrase:  ssh-keygen -t ecdsa -b 256 -N "" -m PEM -f my-new-server-key. Valid values for the -b option for ECDSA are 256, 384, and 521. Use the following command to generate an ED25519 key with no passphrase:  ssh-keygen -t ed25519 -N "" -f my-new-server-key. For all of these commands, you can replace my-new-server-key with a string of your choice.  If you aren't planning to migrate existing users from an existing SFTP-enabled server to a new server, don't update the host key. Accidentally changing a server's host key can be disruptive.  For more information, see Change the host key for your SFTP-enabled server in the Transfer Family User Guide.
+     * The RSA, ECDSA, or ED25519 private key to use for your SFTP-enabled server. You can add multiple host keys, in case you want to rotate keys, or have a set of active keys that use different algorithms. Use the following command to generate an RSA 2048 bit key with no passphrase:  ssh-keygen -t rsa -b 2048 -N "" -m PEM -f my-new-server-key. Use a minimum value of 2048 for the -b option. You can create a stronger key by using 3072 or 4096. Use the following command to generate an ECDSA 256 bit key with no passphrase:  ssh-keygen -t ecdsa -b 256 -N "" -m PEM -f my-new-server-key. Valid values for the -b option for ECDSA are 256, 384, and 521. Use the following command to generate an ED25519 key with no passphrase:  ssh-keygen -t ed25519 -N "" -f my-new-server-key. For all of these commands, you can replace my-new-server-key with a string of your choice.  If you aren't planning to migrate existing users from an existing SFTP-enabled server to a new server, don't update the host key. Accidentally changing a server's host key can be disruptive.  For more information, see Update host keys for your SFTP-enabled server in the Transfer Family User Guide.
      */
     HostKey?: HostKey;
     /**
@@ -2614,7 +2821,7 @@ declare namespace Transfer {
      */
     ServerId: ServerId;
     /**
-     * Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow. To remove an associated workflow from a server, you can provide an empty OnUpload object, as in the following example.  aws transfer update-server --server-id s-01234567890abcdef --workflow-details '{"OnUpload":[]}' 
+     * Specifies the workflow ID for the workflow to assign and the execution role that's used for executing the workflow. In additon to a workflow to execute when a file is uploaded completely, WorkflowDeatails can also contain a workflow ID (and execution role) for a workflow to execute on partial upload. A partial upload occurs when a file is open when the session disconnects. To remove an associated workflow from a server, you can provide an empty OnUpload object, as in the following example.  aws transfer update-server --server-id s-01234567890abcdef --workflow-details '{"OnUpload":[]}' 
      */
     WorkflowDetails?: WorkflowDetails;
   }
@@ -2703,7 +2910,11 @@ declare namespace Transfer {
     /**
      * A trigger that starts a workflow: the workflow begins to execute after a file is uploaded. To remove an associated workflow from a server, you can provide an empty OnUpload object, as in the following example.  aws transfer update-server --server-id s-01234567890abcdef --workflow-details '{"OnUpload":[]}' 
      */
-    OnUpload: OnUploadWorkflowDetails;
+    OnUpload?: OnUploadWorkflowDetails;
+    /**
+     * A trigger that starts a workflow if a file is only partially uploaded. You can attach a workflow to a server that executes whenever there is a partial upload. A partial upload occurs when a file is open when the session disconnects.
+     */
+    OnPartialUpload?: OnPartialUploadWorkflowDetails;
   }
   export type WorkflowId = string;
   export interface WorkflowStep {
