@@ -9,4 +9,8 @@ test/browser/sample/appinfo.js
 dist/aws-sdk-all.js
 yarn.lock
 package-lock.json
+<<<<<<< HEAD
 aws-sdk-*-sw.js
+=======
+workspace
+>>>>>>> 5542025079499968aa5afda7be9d073b069eb063
