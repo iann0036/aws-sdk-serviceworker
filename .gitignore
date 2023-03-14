@@ -10,7 +10,12 @@ dist/aws-sdk-all.js
 yarn.lock
 package-lock.json
 <<<<<<< HEAD
+<<<<<<< HEAD
 aws-sdk-*-sw.js
 =======
 workspace
 >>>>>>> 5542025079499968aa5afda7be9d073b069eb063
+=======
+workspace
+Makefile
+>>>>>>> f3bfd4475143ca1713551d7f5352f87199ed4d4a
