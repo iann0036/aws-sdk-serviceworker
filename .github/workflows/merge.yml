@@ -23,11 +23,9 @@ jobs:
         git remote add aws https://github.com/aws/aws-sdk-js.git || true
         git config pull.rebase false
         git pull aws master || true
-        git merge --no-ff --no-commit master
-        git reset HEAD README.md
         git checkout --ours -- README.md
         git add .
 
         git commit -m "Auto-merge" -a || exit 0
         remote_repo="https://iann0036-bot:${BOT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push "${remote_repo}" HEAD:master
+        git push "${remote_repo}" HEAD:master --force
