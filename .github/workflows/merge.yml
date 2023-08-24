@@ -25,7 +25,6 @@ jobs:
         git pull aws master || true
         git checkout --ours -- README.md
         git add .
-
         git commit -m "Auto-merge" -a || exit 0
         remote_repo="https://iann0036-bot:${BOT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push "${remote_repo}" HEAD:master --force
+        git push "${remote_repo}" HEAD:master
