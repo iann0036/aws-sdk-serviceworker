@@ -590,11 +590,11 @@ declare class Omics extends Service {
    */
   startReferenceImportJob(callback?: (err: AWSError, data: Omics.Types.StartReferenceImportJobResponse) => void): Request<Omics.Types.StartReferenceImportJobResponse, AWSError>;
   /**
-   * Starts a run.
+   * Starts a workflow run. To duplicate a run, specify the run's ID and a role ARN. The remaining parameters are copied from the previous run. The total number of runs in your account is subject to a quota per Region. To avoid needing to delete runs manually, you can set the retention mode to REMOVE. Runs with this setting are deleted automatically when the run quoata is exceeded.
    */
   startRun(params: Omics.Types.StartRunRequest, callback?: (err: AWSError, data: Omics.Types.StartRunResponse) => void): Request<Omics.Types.StartRunResponse, AWSError>;
   /**
-   * Starts a run.
+   * Starts a workflow run. To duplicate a run, specify the run's ID and a role ARN. The remaining parameters are copied from the previous run. The total number of runs in your account is subject to a quota per Region. To avoid needing to delete runs manually, you can set the retention mode to REMOVE. Runs with this setting are deleted automatically when the run quoata is exceeded.
    */
   startRun(callback?: (err: AWSError, data: Omics.Types.StartRunResponse) => void): Request<Omics.Types.StartRunResponse, AWSError>;
   /**
@@ -1277,7 +1277,7 @@ declare namespace Omics {
     /**
      *  The ARN of the reference. 
      */
-    referenceArn: ReferenceArn;
+    referenceArn?: ReferenceArn;
     /**
      *  The name of the read set. 
      */
@@ -1739,8 +1739,24 @@ declare namespace Omics {
     id: WorkflowId;
   }
   export type Description = string;
+  export interface ETag {
+    /**
+     *  The algorithm used to calculate the read set’s ETag(s). 
+     */
+    algorithm?: ETagAlgorithm;
+    /**
+     *  The ETag hash calculated on Source1 of the read set. 
+     */
+    source1?: String;
+    /**
+     *  The ETag hash calculated on Source2 of the read set. 
+     */
+    source2?: String;
+  }
+  export type ETagAlgorithm = "FASTQ_MD5up"|"BAM_MD5up"|"CRAM_MD5up"|string;
   export type Encoding = string;
   export type EncryptionType = "KMS"|string;
+  export type EngineLogStream = string;
   export type EscapeChar = string;
   export type EscapeQuotes = boolean;
   export type ExportJobId = string;
@@ -1823,7 +1839,7 @@ declare namespace Omics {
   export type FileInformationContentLengthLong = number;
   export type FileInformationPartSizeLong = number;
   export type FileInformationTotalPartsInteger = number;
-  export type FileType = "FASTQ"|"BAM"|"CRAM"|string;
+  export type FileType = "FASTQ"|"BAM"|"CRAM"|"UBAM"|string;
   export interface Filter {
     /**
      *  The Amazon Resource Number (Arn) for an analytics store. 
@@ -2236,6 +2252,10 @@ declare namespace Omics {
      *  The creation type of the read set. 
      */
     creationType?: CreationType;
+    /**
+     *  The entity tag (ETag) is a hash of the object meant to represent its semantic content. 
+     */
+    etag?: ETag;
   }
   export interface GetReadSetRequest {
     /**
@@ -2574,12 +2594,32 @@ declare namespace Omics {
      *  The computational accelerator used to run the workflow. 
      */
     accelerators?: Accelerators;
+    /**
+     * The run's retention mode.
+     */
+    retentionMode?: RunRetentionMode;
+    /**
+     *  The reason a run has failed. 
+     */
+    failureReason?: RunFailureReason;
+    /**
+     *  The location of the run log. 
+     */
+    logLocation?: RunLogLocation;
+    /**
+     *  The universally unique identifier for a run. 
+     */
+    uuid?: RunUuid;
+    /**
+     *  The destination for workflow outputs. 
+     */
+    runOutputUri?: RunOutputUri;
   }
   export type GetRunResponsePriorityInteger = number;
   export type GetRunResponseStorageCapacityInteger = number;
   export interface GetRunTaskRequest {
     /**
-     * The task's ID.
+     * The workflow run ID.
      */
     id: RunId;
     /**
@@ -2636,6 +2676,10 @@ declare namespace Omics {
      *  The instance type for a task. 
      */
     instanceType?: TaskInstanceType;
+    /**
+     *  The reason a task has failed. 
+     */
+    failureReason?: TaskFailureReason;
   }
   export type GetRunTaskResponseCpusInteger = number;
   export type GetRunTaskResponseGpusInteger = number;
@@ -3818,7 +3862,7 @@ declare namespace Omics {
     /**
      * A genome reference ARN to filter on.
      */
-    referenceArn?: ReferenceArn;
+    referenceArn?: ReferenceArnFilter;
     /**
      * The filter's start date.
      */
@@ -3903,6 +3947,10 @@ declare namespace Omics {
      *  The creation type of the read set. 
      */
     creationType?: CreationType;
+    /**
+     *  The entity tag (ETag) is a hash of the object representing its semantic content. 
+     */
+    etag?: ETag;
   }
   export type ReadSetName = string;
   export type ReadSetPartSource = "SOURCE1"|"SOURCE2"|string;
@@ -3950,6 +3998,7 @@ declare namespace Omics {
   export type ReadSetUploadPartListItemPartNumberInteger = number;
   export type ReadSetUploadPartListItemPartSizeLong = number;
   export type ReferenceArn = string;
+  export type ReferenceArnFilter = string;
   export type ReferenceDescription = string;
   export type ReferenceFile = "SOURCE"|"INDEX"|string;
   export interface ReferenceFiles {
@@ -4083,6 +4132,7 @@ declare namespace Omics {
   export type RunArn = string;
   export type RunExport = "DEFINITION"|string;
   export type RunExportList = RunExport[];
+  export type RunFailureReason = string;
   export type RunGroupArn = string;
   export type RunGroupId = string;
   export type RunGroupList = RunGroupListItem[];
@@ -4177,6 +4227,17 @@ declare namespace Omics {
   export type RunListItemStorageCapacityInteger = number;
   export type RunListToken = string;
   export type RunLogLevel = "OFF"|"FATAL"|"ERROR"|"ALL"|string;
+  export interface RunLogLocation {
+    /**
+     *  The log stream ARN for the engine log. 
+     */
+    engineLogStream?: EngineLogStream;
+    /**
+     *  The log stream ARN for the run log. 
+     */
+    runLogStream?: RunLogStream;
+  }
+  export type RunLogStream = string;
   export type RunName = string;
   export type RunOutputUri = string;
   export interface RunParameters {
@@ -4185,11 +4246,13 @@ declare namespace Omics {
   export type RunResourceDigest = string;
   export type RunResourceDigestKey = string;
   export type RunResourceDigests = {[key: string]: RunResourceDigest};
+  export type RunRetentionMode = "RETAIN"|"REMOVE"|string;
   export type RunRoleArn = string;
   export type RunStartedBy = string;
   export type RunStatus = "PENDING"|"STARTING"|"RUNNING"|"STOPPING"|"COMPLETED"|"DELETED"|"CANCELLED"|"FAILED"|string;
   export type RunStatusMessage = string;
   export type RunTimestamp = Date;
+  export type RunUuid = string;
   export type S3Destination = string;
   export type S3Uri = string;
   export type SampleId = string;
@@ -4511,7 +4574,7 @@ declare namespace Omics {
     /**
      * The source's reference ARN.
      */
-    referenceArn: ReferenceArn;
+    referenceArn?: ReferenceArn;
     /**
      * The source's name.
      */
@@ -4590,11 +4653,11 @@ declare namespace Omics {
      */
     workflowId?: WorkflowId;
     /**
-     * The run's workflows type.
+     * The run's workflow type.
      */
     workflowType?: WorkflowType;
     /**
-     * The run's ID.
+     * The ID of a run to duplicate.
      */
     runId?: RunId;
     /**
@@ -4637,6 +4700,10 @@ declare namespace Omics {
      * To ensure that requests don't run multiple times, specify a unique ID for each request.
      */
     requestId: RunRequestId;
+    /**
+     * The retention mode for the run.
+     */
+    retentionMode?: RunRetentionMode;
   }
   export type StartRunRequestPriorityInteger = number;
   export type StartRunRequestStorageCapacityInteger = number;
@@ -4657,6 +4724,14 @@ declare namespace Omics {
      * The run's tags.
      */
     tags?: TagMap;
+    /**
+     *  The universally unique identifier for a run. 
+     */
+    uuid?: RunUuid;
+    /**
+     *  The destination for workflow outputs. 
+     */
+    runOutputUri?: RunOutputUri;
   }
   export interface StartVariantImportRequest {
     /**
@@ -4718,6 +4793,7 @@ declare namespace Omics {
   export interface TagResourceResponse {
   }
   export type TagValue = string;
+  export type TaskFailureReason = string;
   export type TaskId = string;
   export type TaskInstanceType = string;
   export type TaskList = TaskListItem[];

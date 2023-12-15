@@ -180,11 +180,11 @@ declare class GuardDuty extends Service {
    */
   describePublishingDestination(callback?: (err: AWSError, data: GuardDuty.Types.DescribePublishingDestinationResponse) => void): Request<GuardDuty.Types.DescribePublishingDestinationResponse, AWSError>;
   /**
-   * Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
+   * Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.
    */
   disableOrganizationAdminAccount(params: GuardDuty.Types.DisableOrganizationAdminAccountRequest, callback?: (err: AWSError, data: GuardDuty.Types.DisableOrganizationAdminAccountResponse) => void): Request<GuardDuty.Types.DisableOrganizationAdminAccountResponse, AWSError>;
   /**
-   * Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
+   * Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.
    */
   disableOrganizationAdminAccount(callback?: (err: AWSError, data: GuardDuty.Types.DisableOrganizationAdminAccountResponse) => void): Request<GuardDuty.Types.DisableOrganizationAdminAccountResponse, AWSError>;
   /**
@@ -204,27 +204,27 @@ declare class GuardDuty extends Service {
    */
   disassociateFromMasterAccount(callback?: (err: AWSError, data: GuardDuty.Types.DisassociateFromMasterAccountResponse) => void): Request<GuardDuty.Types.DisassociateFromMasterAccountResponse, AWSError>;
   /**
-   * Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs. When you disassociate an invited member from a GuardDuty delegated administrator, the member account details obtained from the CreateMembers API, including the associated email addresses, are retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.  With autoEnableOrganizationMembers configuration for your organization set to ALL, you'll receive an error if you attempt to disassociate a member account before removing them from your Amazon Web Services organization.
+   * Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs. When you disassociate an invited member from a GuardDuty delegated administrator, the member account details obtained from the CreateMembers API, including the associated email addresses, are retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.  With autoEnableOrganizationMembers configuration for your organization set to ALL, you'll receive an error if you attempt to disassociate a member account before removing them from your organization.
    */
   disassociateMembers(params: GuardDuty.Types.DisassociateMembersRequest, callback?: (err: AWSError, data: GuardDuty.Types.DisassociateMembersResponse) => void): Request<GuardDuty.Types.DisassociateMembersResponse, AWSError>;
   /**
-   * Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs. When you disassociate an invited member from a GuardDuty delegated administrator, the member account details obtained from the CreateMembers API, including the associated email addresses, are retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.  With autoEnableOrganizationMembers configuration for your organization set to ALL, you'll receive an error if you attempt to disassociate a member account before removing them from your Amazon Web Services organization.
+   * Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs. When you disassociate an invited member from a GuardDuty delegated administrator, the member account details obtained from the CreateMembers API, including the associated email addresses, are retained. This is done so that the delegated administrator can invoke the InviteMembers API without the need to invoke the CreateMembers API again. To remove the details associated with a member account, the delegated administrator must invoke the DeleteMembers API.  With autoEnableOrganizationMembers configuration for your organization set to ALL, you'll receive an error if you attempt to disassociate a member account before removing them from your organization.
    */
   disassociateMembers(callback?: (err: AWSError, data: GuardDuty.Types.DisassociateMembersResponse) => void): Request<GuardDuty.Types.DisassociateMembersResponse, AWSError>;
   /**
-   * Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator.
+   * Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.
    */
   enableOrganizationAdminAccount(params: GuardDuty.Types.EnableOrganizationAdminAccountRequest, callback?: (err: AWSError, data: GuardDuty.Types.EnableOrganizationAdminAccountResponse) => void): Request<GuardDuty.Types.EnableOrganizationAdminAccountResponse, AWSError>;
   /**
-   * Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator.
+   * Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.
    */
   enableOrganizationAdminAccount(callback?: (err: AWSError, data: GuardDuty.Types.EnableOrganizationAdminAccountResponse) => void): Request<GuardDuty.Types.EnableOrganizationAdminAccountResponse, AWSError>;
   /**
-   * Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
+   * Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account.  If the organization's management account or a delegated administrator runs this API, it will return success (HTTP 200) but no content. 
    */
   getAdministratorAccount(params: GuardDuty.Types.GetAdministratorAccountRequest, callback?: (err: AWSError, data: GuardDuty.Types.GetAdministratorAccountResponse) => void): Request<GuardDuty.Types.GetAdministratorAccountResponse, AWSError>;
   /**
-   * Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
+   * Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account.  If the organization's management account or a delegated administrator runs this API, it will return success (HTTP 200) but no content. 
    */
   getAdministratorAccount(callback?: (err: AWSError, data: GuardDuty.Types.GetAdministratorAccountResponse) => void): Request<GuardDuty.Types.GetAdministratorAccountResponse, AWSError>;
   /**
@@ -340,11 +340,11 @@ declare class GuardDuty extends Service {
    */
   getUsageStatistics(callback?: (err: AWSError, data: GuardDuty.Types.GetUsageStatisticsResponse) => void): Request<GuardDuty.Types.GetUsageStatisticsResponse, AWSError>;
   /**
-   * Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manager your GuardDuty environment, this step is not needed. For more information, see Managing accounts with Amazon Web Services Organizations. To invite Amazon Web Services accounts, the first step is to ensure that GuardDuty has been enabled in the potential member accounts. You can now invoke this API to add accounts by invitation. The invited accounts can either accept or decline the invitation from their GuardDuty accounts. Each invited Amazon Web Services account can choose to accept the invitation from only one Amazon Web Services account. For more information, see Managing GuardDuty accounts by invitation. After the invite has been accepted and you choose to disassociate a member account (by using DisassociateMembers) from your account, the details of the member account obtained by invoking CreateMembers, including the associated email addresses, will be retained. This is done so that you can invoke InviteMembers without the need to invoke CreateMembers again. To remove the details associated with a member account, you must also invoke DeleteMembers. 
+   * Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manage your GuardDuty environment, this step is not needed. For more information, see Managing accounts with organizations. To invite Amazon Web Services accounts, the first step is to ensure that GuardDuty has been enabled in the potential member accounts. You can now invoke this API to add accounts by invitation. The invited accounts can either accept or decline the invitation from their GuardDuty accounts. Each invited Amazon Web Services account can choose to accept the invitation from only one Amazon Web Services account. For more information, see Managing GuardDuty accounts by invitation. After the invite has been accepted and you choose to disassociate a member account (by using DisassociateMembers) from your account, the details of the member account obtained by invoking CreateMembers, including the associated email addresses, will be retained. This is done so that you can invoke InviteMembers without the need to invoke CreateMembers again. To remove the details associated with a member account, you must also invoke DeleteMembers. 
    */
   inviteMembers(params: GuardDuty.Types.InviteMembersRequest, callback?: (err: AWSError, data: GuardDuty.Types.InviteMembersResponse) => void): Request<GuardDuty.Types.InviteMembersResponse, AWSError>;
   /**
-   * Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manager your GuardDuty environment, this step is not needed. For more information, see Managing accounts with Amazon Web Services Organizations. To invite Amazon Web Services accounts, the first step is to ensure that GuardDuty has been enabled in the potential member accounts. You can now invoke this API to add accounts by invitation. The invited accounts can either accept or decline the invitation from their GuardDuty accounts. Each invited Amazon Web Services account can choose to accept the invitation from only one Amazon Web Services account. For more information, see Managing GuardDuty accounts by invitation. After the invite has been accepted and you choose to disassociate a member account (by using DisassociateMembers) from your account, the details of the member account obtained by invoking CreateMembers, including the associated email addresses, will be retained. This is done so that you can invoke InviteMembers without the need to invoke CreateMembers again. To remove the details associated with a member account, you must also invoke DeleteMembers. 
+   * Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manage your GuardDuty environment, this step is not needed. For more information, see Managing accounts with organizations. To invite Amazon Web Services accounts, the first step is to ensure that GuardDuty has been enabled in the potential member accounts. You can now invoke this API to add accounts by invitation. The invited accounts can either accept or decline the invitation from their GuardDuty accounts. Each invited Amazon Web Services account can choose to accept the invitation from only one Amazon Web Services account. For more information, see Managing GuardDuty accounts by invitation. After the invite has been accepted and you choose to disassociate a member account (by using DisassociateMembers) from your account, the details of the member account obtained by invoking CreateMembers, including the associated email addresses, will be retained. This is done so that you can invoke InviteMembers without the need to invoke CreateMembers again. To remove the details associated with a member account, you must also invoke DeleteMembers. 
    */
   inviteMembers(callback?: (err: AWSError, data: GuardDuty.Types.InviteMembersResponse) => void): Request<GuardDuty.Types.InviteMembersResponse, AWSError>;
   /**
@@ -404,11 +404,11 @@ declare class GuardDuty extends Service {
    */
   listMembers(callback?: (err: AWSError, data: GuardDuty.Types.ListMembersResponse) => void): Request<GuardDuty.Types.ListMembersResponse, AWSError>;
   /**
-   * Lists the accounts configured as GuardDuty delegated administrators.
+   * Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.
    */
   listOrganizationAdminAccounts(params: GuardDuty.Types.ListOrganizationAdminAccountsRequest, callback?: (err: AWSError, data: GuardDuty.Types.ListOrganizationAdminAccountsResponse) => void): Request<GuardDuty.Types.ListOrganizationAdminAccountsResponse, AWSError>;
   /**
-   * Lists the accounts configured as GuardDuty delegated administrators.
+   * Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.
    */
   listOrganizationAdminAccounts(callback?: (err: AWSError, data: GuardDuty.Types.ListOrganizationAdminAccountsResponse) => void): Request<GuardDuty.Types.ListOrganizationAdminAccountsResponse, AWSError>;
   /**
@@ -420,11 +420,11 @@ declare class GuardDuty extends Service {
    */
   listPublishingDestinations(callback?: (err: AWSError, data: GuardDuty.Types.ListPublishingDestinationsResponse) => void): Request<GuardDuty.Types.ListPublishingDestinationsResponse, AWSError>;
   /**
-   * Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per each resource. When invoked, this operation returns all assigned tags for a given resource.
+   * Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
    */
   listTagsForResource(params: GuardDuty.Types.ListTagsForResourceRequest, callback?: (err: AWSError, data: GuardDuty.Types.ListTagsForResourceResponse) => void): Request<GuardDuty.Types.ListTagsForResourceResponse, AWSError>;
   /**
-   * Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per each resource. When invoked, this operation returns all assigned tags for a given resource.
+   * Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
    */
   listTagsForResource(callback?: (err: AWSError, data: GuardDuty.Types.ListTagsForResourceResponse) => void): Request<GuardDuty.Types.ListTagsForResourceResponse, AWSError>;
   /**
@@ -532,11 +532,11 @@ declare class GuardDuty extends Service {
    */
   updateMemberDetectors(callback?: (err: AWSError, data: GuardDuty.Types.UpdateMemberDetectorsResponse) => void): Request<GuardDuty.Types.UpdateMemberDetectorsResponse, AWSError>;
   /**
-   * Configures the delegated administrator account with the provided values. You must provide the value for either autoEnableOrganizationMembers or autoEnable.  There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
+   * Configures the delegated administrator account with the provided values. You must provide a value for either autoEnableOrganizationMembers or autoEnable, but not both.  There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
    */
   updateOrganizationConfiguration(params: GuardDuty.Types.UpdateOrganizationConfigurationRequest, callback?: (err: AWSError, data: GuardDuty.Types.UpdateOrganizationConfigurationResponse) => void): Request<GuardDuty.Types.UpdateOrganizationConfigurationResponse, AWSError>;
   /**
-   * Configures the delegated administrator account with the provided values. You must provide the value for either autoEnableOrganizationMembers or autoEnable.  There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
+   * Configures the delegated administrator account with the provided values. You must provide a value for either autoEnableOrganizationMembers or autoEnable, but not both.  There might be regional differences because some data sources might not be available in all the Amazon Web Services Regions where GuardDuty is presently supported. For more information, see Regions and endpoints.
    */
   updateOrganizationConfiguration(callback?: (err: AWSError, data: GuardDuty.Types.UpdateOrganizationConfigurationResponse) => void): Request<GuardDuty.Types.UpdateOrganizationConfigurationResponse, AWSError>;
   /**
@@ -680,6 +680,18 @@ declare namespace GuardDuty {
      * Information about RDS_LOGIN_ATTEMPT action described in this finding.
      */
     RdsLoginAttemptAction?: RdsLoginAttemptAction;
+    /**
+     * Information whether the user has the permission to use a specific Kubernetes API.
+     */
+    KubernetesPermissionCheckedDetails?: KubernetesPermissionCheckedDetails;
+    /**
+     * Information about the role binding that grants the permission defined in a Kubernetes role.
+     */
+    KubernetesRoleBindingDetails?: KubernetesRoleBindingDetails;
+    /**
+     * Information about the Kubernetes role name and role type.
+     */
+    KubernetesRoleDetails?: KubernetesRoleDetails;
   }
   export interface AddonDetails {
     /**
@@ -722,6 +734,46 @@ declare namespace GuardDuty {
     InvitedAt?: String;
   }
   export type AffectedResources = {[key: string]: String};
+  export interface AgentDetails {
+    /**
+     * Version of the installed GuardDuty security agent.
+     */
+    Version?: String;
+  }
+  export interface Anomaly {
+    /**
+     * Information about the types of profiles.
+     */
+    Profiles?: AnomalyProfiles;
+    /**
+     * Information about the behavior of the anomalies.
+     */
+    Unusual?: AnomalyUnusual;
+  }
+  export interface AnomalyObject {
+    /**
+     * The type of behavior of the profile.
+     */
+    ProfileType?: ProfileType;
+    /**
+     * The frequency of the anomaly.
+     */
+    ProfileSubtype?: ProfileSubtype;
+    /**
+     * The recorded value.
+     */
+    Observations?: Observations;
+  }
+  export type AnomalyProfileFeatureObjects = AnomalyObject[];
+  export type AnomalyProfileFeatures = {[key: string]: AnomalyProfileFeatureObjects};
+  export type AnomalyProfiles = {[key: string]: AnomalyProfileFeatures};
+  export interface AnomalyUnusual {
+    /**
+     * The behavior of the anomalous activity that caused GuardDuty to generate the finding.
+     */
+    Behavior?: Behavior;
+  }
+  export type AnomalyUnusualBehaviorFeature = {[key: string]: AnomalyObject};
   export interface ArchiveFindingsRequest {
     /**
      * The ID of the detector that specifies the GuardDuty service whose findings you want to archive.
@@ -773,6 +825,7 @@ declare namespace GuardDuty {
      */
     AffectedResources?: AffectedResources;
   }
+  export type Behavior = {[key: string]: AnomalyUnusualBehaviorFeature};
   export interface BlockPublicAccess {
     /**
      * Indicates if S3 Block Public Access is set to IgnorePublicAcls.
@@ -909,6 +962,16 @@ declare namespace GuardDuty {
      */
     SecurityContext?: SecurityContext;
   }
+  export interface ContainerInstanceDetails {
+    /**
+     * Represents the nodes in the Amazon ECS cluster that has a HEALTHY coverage status.
+     */
+    CoveredContainerInstances?: Long;
+    /**
+     * Represents total number of nodes in the Amazon ECS cluster.
+     */
+    CompatibleContainerInstances?: Long;
+  }
   export type Containers = Container[];
   export type CountByCoverageStatus = {[key: string]: Long};
   export type CountByResourceType = {[key: string]: Long};
@@ -922,6 +985,42 @@ declare namespace GuardDuty {
      * The country name of the remote IP address.
      */
     CountryName?: String;
+  }
+  export interface CoverageEc2InstanceDetails {
+    /**
+     * The Amazon EC2 instance ID.
+     */
+    InstanceId?: String;
+    /**
+     * The instance type of the Amazon EC2 instance.
+     */
+    InstanceType?: String;
+    /**
+     * The cluster ARN of the Amazon ECS cluster running on the Amazon EC2 instance.
+     */
+    ClusterArn?: String;
+    /**
+     * Information about the installed security agent.
+     */
+    AgentDetails?: AgentDetails;
+    /**
+     * Indicates how the GuardDuty security agent is managed for this resource.    AUTO_MANAGED indicates that GuardDuty deploys and manages updates for this resource.    MANUAL indicates that you are responsible to deploy, update, and manage the GuardDuty security agent updates for this resource.    The DISABLED status doesn't apply to Amazon EC2 instances and Amazon EKS clusters that run on Amazon EC2 instances. 
+     */
+    ManagementType?: ManagementType;
+  }
+  export interface CoverageEcsClusterDetails {
+    /**
+     * The name of the Amazon ECS cluster.
+     */
+    ClusterName?: String;
+    /**
+     * Information about the Fargate details associated with the Amazon ECS cluster.
+     */
+    FargateDetails?: FargateDetails;
+    /**
+     * Information about the Amazon ECS container running on Amazon EC2 instance.
+     */
+    ContainerInstanceDetails?: ContainerInstanceDetails;
   }
   export interface CoverageEksClusterDetails {
     /**
@@ -940,6 +1039,10 @@ declare namespace GuardDuty {
      * Information about the installed EKS add-on.
      */
     AddonDetails?: AddonDetails;
+    /**
+     * Indicates how the Amazon EKS add-on GuardDuty agent is managed for this EKS cluster.  AUTO_MANAGED indicates GuardDuty deploys and manages updates for this resource.  MANUAL indicates that you are responsible to deploy, update, and manage the Amazon EKS add-on GuardDuty agent for this resource.
+     */
+    ManagementType?: ManagementType;
   }
   export interface CoverageFilterCondition {
     /**
@@ -959,7 +1062,7 @@ declare namespace GuardDuty {
   }
   export interface CoverageFilterCriterion {
     /**
-     * An enum value representing possible filter fields.
+     * An enum value representing possible filter fields.  Replace the enum value CLUSTER_NAME with EKS_CLUSTER_NAME. CLUSTER_NAME has been deprecated. 
      */
     CriterionKey?: CoverageFilterCriterionKey;
     /**
@@ -967,7 +1070,7 @@ declare namespace GuardDuty {
      */
     FilterCondition?: CoverageFilterCondition;
   }
-  export type CoverageFilterCriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|string;
+  export type CoverageFilterCriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|"MANAGEMENT_TYPE"|"EKS_CLUSTER_NAME"|"ECS_CLUSTER_NAME"|"AGENT_VERSION"|"INSTANCE_ID"|"CLUSTER_ARN"|string;
   export type CoverageFilterCriterionList = CoverageFilterCriterion[];
   export interface CoverageResource {
     /**
@@ -1008,11 +1111,19 @@ declare namespace GuardDuty {
      * The type of Amazon Web Services resource.
      */
     ResourceType?: ResourceType;
+    /**
+     * Information about the Amazon ECS cluster that is assessed for runtime coverage.
+     */
+    EcsClusterDetails?: CoverageEcsClusterDetails;
+    /**
+     *  This API is also used when you use GuardDuty Runtime Monitoring for your Amazon EC2 instances (currently in preview release) and is subject to change.  Information about the Amazon EC2 instance assessed for runtime coverage.
+     */
+    Ec2InstanceDetails?: CoverageEc2InstanceDetails;
   }
   export type CoverageResources = CoverageResource[];
   export interface CoverageSortCriteria {
     /**
-     * Represents the field name used to sort the coverage details.
+     * Represents the field name used to sort the coverage details.  Replace the enum value CLUSTER_NAME with EKS_CLUSTER_NAME. CLUSTER_NAME has been deprecated. 
      */
     AttributeName?: CoverageSortKey;
     /**
@@ -1020,7 +1131,7 @@ declare namespace GuardDuty {
      */
     OrderBy?: OrderBy;
   }
-  export type CoverageSortKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"COVERAGE_STATUS"|"ISSUE"|"ADDON_VERSION"|"UPDATED_AT"|string;
+  export type CoverageSortKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"COVERAGE_STATUS"|"ISSUE"|"ADDON_VERSION"|"UPDATED_AT"|"EKS_CLUSTER_NAME"|"ECS_CLUSTER_NAME"|"INSTANCE_ID"|string;
   export interface CoverageStatistics {
     /**
      * Represents coverage statistics for EKS clusters aggregated by resource type.
@@ -1092,7 +1203,7 @@ declare namespace GuardDuty {
      */
     Rank?: FilterRank;
     /**
-     * Represents the criteria to be used in the filter for querying findings. You can only use the following attributes to query findings:   accountId   id   region   severity To filter on the basis of severity, the API and CLI use the following input list for the FindingCriteria condition:    Low: ["1", "2", "3"]     Medium: ["4", "5", "6"]     High: ["7", "8", "9"]    For more information, see Severity levels for GuardDuty findings.   type   updatedAt Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains milliseconds.   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.outpostArn   resource.resourceType   resource.s3BucketDetails.publicAccess.effectivePermissions   resource.s3BucketDetails.name   resource.s3BucketDetails.tags.key   resource.s3BucketDetails.tags.value   resource.s3BucketDetails.type   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.errorCode   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.remoteIpDetails.city.cityName   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.action.awsApiCallAction.remoteAccountDetails.affiliated   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4   service.action.kubernetesApiCallAction.requestUri   service.action.networkConnectionAction.localIpDetails.ipAddressV4   service.action.networkConnectionAction.protocol   service.action.awsApiCallAction.serviceName   service.action.awsApiCallAction.remoteAccountDetails.accountId   service.additionalInfo.threatListName   service.resourceRole   resource.eksClusterDetails.name   resource.kubernetesDetails.kubernetesWorkloadDetails.name   resource.kubernetesDetails.kubernetesWorkloadDetails.namespace   resource.kubernetesDetails.kubernetesUserDetails.username   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix   service.ebsVolumeScanDetails.scanId   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash   resource.ecsClusterDetails.name   resource.ecsClusterDetails.taskDetails.containers.image   resource.ecsClusterDetails.taskDetails.definitionArn   resource.containerDetails.image   resource.rdsDbInstanceDetails.dbInstanceIdentifier   resource.rdsDbInstanceDetails.dbClusterIdentifier   resource.rdsDbInstanceDetails.engine   resource.rdsDbUserDetails.user   resource.rdsDbInstanceDetails.tags.key   resource.rdsDbInstanceDetails.tags.value   service.runtimeDetails.process.executableSha256   service.runtimeDetails.process.name   service.runtimeDetails.process.name   resource.lambdaDetails.functionName   resource.lambdaDetails.functionArn   resource.lambdaDetails.tags.key   resource.lambdaDetails.tags.value  
+     * Represents the criteria to be used in the filter for querying findings. You can only use the following attributes to query findings:   accountId   id   region   severity To filter on the basis of severity, the API and CLI use the following input list for the FindingCriteria condition:    Low: ["1", "2", "3"]     Medium: ["4", "5", "6"]     High: ["7", "8", "9"]    For more information, see Severity levels for GuardDuty findings.   type   updatedAt Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains milliseconds.   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.outpostArn   resource.resourceType   resource.s3BucketDetails.publicAccess.effectivePermissions   resource.s3BucketDetails.name   resource.s3BucketDetails.tags.key   resource.s3BucketDetails.tags.value   resource.s3BucketDetails.type   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.errorCode   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.dnsRequestAction.domainWithSuffix   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.remoteIpDetails.city.cityName   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.action.awsApiCallAction.remoteAccountDetails.affiliated   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4   service.action.kubernetesApiCallAction.namespace   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn   service.action.kubernetesApiCallAction.requestUri   service.action.kubernetesApiCallAction.statusCode   service.action.networkConnectionAction.localIpDetails.ipAddressV4   service.action.networkConnectionAction.protocol   service.action.awsApiCallAction.serviceName   service.action.awsApiCallAction.remoteAccountDetails.accountId   service.additionalInfo.threatListName   service.resourceRole   resource.eksClusterDetails.name   resource.kubernetesDetails.kubernetesWorkloadDetails.name   resource.kubernetesDetails.kubernetesWorkloadDetails.namespace   resource.kubernetesDetails.kubernetesUserDetails.username   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image   resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix   service.ebsVolumeScanDetails.scanId   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity   service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash   resource.ecsClusterDetails.name   resource.ecsClusterDetails.taskDetails.containers.image   resource.ecsClusterDetails.taskDetails.definitionArn   resource.containerDetails.image   resource.rdsDbInstanceDetails.dbInstanceIdentifier   resource.rdsDbInstanceDetails.dbClusterIdentifier   resource.rdsDbInstanceDetails.engine   resource.rdsDbUserDetails.user   resource.rdsDbInstanceDetails.tags.key   resource.rdsDbInstanceDetails.tags.value   service.runtimeDetails.process.executableSha256   service.runtimeDetails.process.name   service.runtimeDetails.process.name   resource.lambdaDetails.functionName   resource.lambdaDetails.functionArn   resource.lambdaDetails.tags.key   resource.lambdaDetails.tags.value  
      */
     FindingCriteria: FindingCriteria;
     /**
@@ -1491,7 +1602,7 @@ declare namespace GuardDuty {
      */
     NextToken?: String;
     /**
-     * Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.    NEW: Indicates that when a new account joins the organization, they will have GuardDuty enabled automatically.     ALL: Indicates that all accounts in the Amazon Web Services Organization have GuardDuty enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty.    NONE: Indicates that GuardDuty will not be automatically enabled for any accounts in the organization. GuardDuty must be managed for each account individually by the administrator.  
+     * Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.    NEW: Indicates that when a new account joins the organization, they will have GuardDuty enabled automatically.     ALL: Indicates that all accounts in the organization have GuardDuty enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty.    NONE: Indicates that GuardDuty will not be automatically enabled for any account in the organization. The administrator must manage GuardDuty for each account in the organization individually.  
      */
     AutoEnableOrganizationMembers?: AutoEnableMembers;
   }
@@ -1553,6 +1664,12 @@ declare namespace GuardDuty {
   }
   export type DestinationType = "S3"|string;
   export type Destinations = Destination[];
+  export interface Detection {
+    /**
+     * The details about the anomalous activity that caused GuardDuty to generate the finding.
+     */
+    Anomaly?: Anomaly;
+  }
   export interface DetectorAdditionalConfiguration {
     /**
      * Name of the additional configuration.
@@ -1579,7 +1696,7 @@ declare namespace GuardDuty {
   }
   export type DetectorAdditionalConfigurationResults = DetectorAdditionalConfigurationResult[];
   export type DetectorAdditionalConfigurations = DetectorAdditionalConfiguration[];
-  export type DetectorFeature = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|string;
+  export type DetectorFeature = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING"|string;
   export interface DetectorFeatureConfiguration {
     /**
      * The name of the feature.
@@ -1614,7 +1731,7 @@ declare namespace GuardDuty {
   }
   export type DetectorFeatureConfigurations = DetectorFeatureConfiguration[];
   export type DetectorFeatureConfigurationsResults = DetectorFeatureConfigurationResult[];
-  export type DetectorFeatureResult = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|string;
+  export type DetectorFeatureResult = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING"|string;
   export type DetectorId = string;
   export type DetectorIds = DetectorId[];
   export type DetectorStatus = "ENABLED"|"DISABLED"|string;
@@ -1671,6 +1788,10 @@ declare namespace GuardDuty {
      * Indicates whether the targeted port is blocked.
      */
     Blocked?: Boolean;
+    /**
+     * The second and top level domain involved in the activity that prompted GuardDuty to generate this finding.
+     */
+    DomainWithSuffix?: String;
   }
   export interface DomainDetails {
     /**
@@ -1835,7 +1956,7 @@ declare namespace GuardDuty {
   export type Email = string;
   export interface EnableOrganizationAdminAccountRequest {
     /**
-     * The Amazon Web Services Account ID for the organization account to be enabled as a GuardDuty delegated administrator.
+     * The Amazon Web Services account ID for the organization account to be enabled as a GuardDuty delegated administrator.
      */
     AdminAccountId: String;
   }
@@ -1849,7 +1970,17 @@ declare namespace GuardDuty {
      */
     ThreatIntelligenceDetails?: ThreatIntelligenceDetails;
   }
-  export type FeatureAdditionalConfiguration = "EKS_ADDON_MANAGEMENT"|string;
+  export interface FargateDetails {
+    /**
+     * Runtime coverage issues identified for the resource running on AWS Fargate.
+     */
+    Issues?: Issues;
+    /**
+     * Indicates how the GuardDuty security agent is managed for this resource.    AUTO_MANAGED indicates that GuardDuty deploys and manages updates for this resource.    MANUAL indicates that you are responsible to deploy, update, and manage the GuardDuty security agent updates for this resource.    DISABLED indicates that the deployment of the GuardDuty security agent is disabled for this resource.  
+     */
+    ManagementType?: ManagementType;
+  }
+  export type FeatureAdditionalConfiguration = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|string;
   export type FeatureStatus = "ENABLED"|"DISABLED"|string;
   export type Feedback = "USEFUL"|"NOT_USEFUL"|string;
   export type FilePaths = ScanFilePath[];
@@ -1876,7 +2007,7 @@ declare namespace GuardDuty {
   }
   export interface FilterCriterion {
     /**
-     * An enum value representing possible scan properties to match with given scan entries.
+     * An enum value representing possible scan properties to match with given scan entries.  Replace the enum value CLUSTER_NAME with EKS_CLUSTER_NAME. CLUSTER_NAME has been deprecated. 
      */
     CriterionKey?: CriterionKey;
     /**
@@ -1983,7 +2114,7 @@ declare namespace GuardDuty {
     FreeTrialDaysRemaining?: Integer;
   }
   export type FreeTrialFeatureConfigurationsResults = FreeTrialFeatureConfigurationResult[];
-  export type FreeTrialFeatureResult = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|string;
+  export type FreeTrialFeatureResult = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|string;
   export interface GeoLocation {
     /**
      * The latitude information of the remote IP address.
@@ -2370,6 +2501,16 @@ declare namespace GuardDuty {
      */
     Id?: String;
   }
+  export interface ImpersonatedUser {
+    /**
+     * Information about the username that was being impersonated.
+     */
+    Username?: String;
+    /**
+     * The group to which the user name belongs.
+     */
+    Groups?: Groups;
+  }
   export type InstanceArn = string;
   export interface InstanceDetails {
     /**
@@ -2474,6 +2615,7 @@ declare namespace GuardDuty {
   export type IpSetIds = String[];
   export type IpSetStatus = "INACTIVE"|"ACTIVATING"|"ACTIVE"|"DEACTIVATING"|"ERROR"|"DELETE_PENDING"|"DELETED"|string;
   export type Ipv6Addresses = String[];
+  export type Issues = String[];
   export interface KubernetesApiCallAction {
     /**
      * The Kubernetes API request URI.
@@ -2500,6 +2642,22 @@ declare namespace GuardDuty {
      * Parameters related to the Kubernetes API call action.
      */
     Parameters?: String;
+    /**
+     * The resource component in the Kubernetes API call action.
+     */
+    Resource?: String;
+    /**
+     * The name of the sub-resource in the Kubernetes API call action.
+     */
+    Subresource?: String;
+    /**
+     * The name of the namespace where the Kubernetes API call action takes place.
+     */
+    Namespace?: String;
+    /**
+     * The name of the resource in the Kubernetes API call action.
+     */
+    ResourceName?: String;
   }
   export interface KubernetesAuditLogsConfiguration {
     /**
@@ -2541,6 +2699,60 @@ declare namespace GuardDuty {
      */
     KubernetesWorkloadDetails?: KubernetesWorkloadDetails;
   }
+  export interface KubernetesPermissionCheckedDetails {
+    /**
+     * The verb component of the Kubernetes API call. For example, when you check whether or not you have the permission to call the CreatePod API, the verb component will be Create.
+     */
+    Verb?: String;
+    /**
+     * The Kubernetes resource with which your Kubernetes API call will interact.
+     */
+    Resource?: String;
+    /**
+     * The namespace where the Kubernetes API action will take place.
+     */
+    Namespace?: String;
+    /**
+     * Information whether the user has the permission to call the Kubernetes API.
+     */
+    Allowed?: Boolean;
+  }
+  export interface KubernetesRoleBindingDetails {
+    /**
+     * The kind of the role. For role binding, this value will be RoleBinding.
+     */
+    Kind?: String;
+    /**
+     * The name of the RoleBinding.
+     */
+    Name?: String;
+    /**
+     * The unique identifier of the role binding.
+     */
+    Uid?: String;
+    /**
+     * The name of the role being referenced. This must match the name of the Role or ClusterRole that you want to bind to.
+     */
+    RoleRefName?: String;
+    /**
+     * The type of the role being referenced. This could be either Role or ClusterRole.
+     */
+    RoleRefKind?: String;
+  }
+  export interface KubernetesRoleDetails {
+    /**
+     * The kind of role. For this API, the value of kind will be Role.
+     */
+    Kind?: String;
+    /**
+     * The name of the Kubernetes role.
+     */
+    Name?: String;
+    /**
+     * The unique identifier of the Kubernetes role name.
+     */
+    Uid?: String;
+  }
   export interface KubernetesUserDetails {
     /**
      * The username of the user who called the Kubernetes API.
@@ -2558,6 +2770,10 @@ declare namespace GuardDuty {
      * Entity that assumes the IAM role when Kubernetes RBAC permissions are assigned to that role.
      */
     SessionName?: SessionNameList;
+    /**
+     * Information about the impersonated user.
+     */
+    ImpersonatedUser?: ImpersonatedUser;
   }
   export interface KubernetesWorkloadDetails {
     /**
@@ -2588,6 +2804,18 @@ declare namespace GuardDuty {
      * Volumes used by the Kubernetes workload.
      */
     Volumes?: Volumes;
+    /**
+     * The service account name that is associated with a Kubernetes workload.
+     */
+    ServiceAccountName?: String;
+    /**
+     * Whether the host IPC flag is enabled for the pods in the workload.
+     */
+    HostIPC?: Boolean;
+    /**
+     * Whether the host PID flag is enabled for the pods in the workload. 
+     */
+    HostPID?: Boolean;
   }
   export interface LambdaDetails {
     /**
@@ -2748,7 +2976,7 @@ declare namespace GuardDuty {
      */
     DetectorId: DetectorId;
     /**
-     * Represents the criteria used for querying findings. Valid values include:   JSON field name   accountId   region   confidence   id   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.resourceType   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.additionalInfo.threatListName   service.archived When this attribute is set to 'true', only archived findings are listed. When it's set to 'false', only unarchived findings are listed. When this attribute is not set, all existing findings are listed.   service.resourceRole   severity   type   updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000  
+     * Represents the criteria used for querying findings. Valid values include:   JSON field name   accountId   region   confidence   id   resource.accessKeyDetails.accessKeyId   resource.accessKeyDetails.principalId   resource.accessKeyDetails.userName   resource.accessKeyDetails.userType   resource.instanceDetails.iamInstanceProfile.id   resource.instanceDetails.imageId   resource.instanceDetails.instanceId   resource.instanceDetails.networkInterfaces.ipv6Addresses   resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress   resource.instanceDetails.networkInterfaces.publicDnsName   resource.instanceDetails.networkInterfaces.publicIp   resource.instanceDetails.networkInterfaces.securityGroups.groupId   resource.instanceDetails.networkInterfaces.securityGroups.groupName   resource.instanceDetails.networkInterfaces.subnetId   resource.instanceDetails.networkInterfaces.vpcId   resource.instanceDetails.tags.key   resource.instanceDetails.tags.value   resource.resourceType   service.action.actionType   service.action.awsApiCallAction.api   service.action.awsApiCallAction.callerType   service.action.awsApiCallAction.remoteIpDetails.city.cityName   service.action.awsApiCallAction.remoteIpDetails.country.countryName   service.action.awsApiCallAction.remoteIpDetails.ipAddressV4   service.action.awsApiCallAction.remoteIpDetails.organization.asn   service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg   service.action.awsApiCallAction.serviceName   service.action.dnsRequestAction.domain   service.action.dnsRequestAction.domainWithSuffix   service.action.networkConnectionAction.blocked   service.action.networkConnectionAction.connectionDirection   service.action.networkConnectionAction.localPortDetails.port   service.action.networkConnectionAction.protocol   service.action.networkConnectionAction.remoteIpDetails.country.countryName   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4   service.action.networkConnectionAction.remoteIpDetails.organization.asn   service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg   service.action.networkConnectionAction.remotePortDetails.port   service.additionalInfo.threatListName   service.archived When this attribute is set to 'true', only archived findings are listed. When it's set to 'false', only unarchived findings are listed. When this attribute is not set, all existing findings are listed.   service.resourceRole   severity   type   updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000  
      */
     FindingCriteria?: FindingCriteria;
     /**
@@ -2838,7 +3066,7 @@ declare namespace GuardDuty {
   }
   export interface ListMembersResponse {
     /**
-     * A list of members.
+     * A list of members.  The values for email and invitedAt are available only if the member accounts are added by invitation. 
      */
     Members?: Members;
     /**
@@ -2986,6 +3214,7 @@ declare namespace GuardDuty {
      */
     ScanEc2InstanceWithFindings?: DataSourceFreeTrial;
   }
+  export type ManagementType = "AUTO_MANAGED"|"MANUAL"|"DISABLED"|string;
   export type MapEquals = ScanConditionPair[];
   export interface Master {
     /**
@@ -3194,9 +3423,16 @@ declare namespace GuardDuty {
   export type NetworkInterfaces = NetworkInterface[];
   export type NonEmptyString = string;
   export type NotEquals = String[];
+  export type ObservationTexts = String[];
+  export interface Observations {
+    /**
+     * The text that was unusual.
+     */
+    Text?: ObservationTexts;
+  }
   export type OrderBy = "ASC"|"DESC"|string;
-  export type OrgFeature = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|string;
-  export type OrgFeatureAdditionalConfiguration = "EKS_ADDON_MANAGEMENT"|string;
+  export type OrgFeature = "S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"EKS_RUNTIME_MONITORING"|"LAMBDA_NETWORK_LOGS"|"RUNTIME_MONITORING"|string;
+  export type OrgFeatureAdditionalConfiguration = "EKS_ADDON_MANAGEMENT"|"ECS_FARGATE_AGENT_MANAGEMENT"|string;
   export type OrgFeatureStatus = "NEW"|"NONE"|"ALL"|string;
   export interface Organization {
     /**
@@ -3222,7 +3458,7 @@ declare namespace GuardDuty {
      */
     Name?: OrgFeatureAdditionalConfiguration;
     /**
-     * The status of the additional configuration that will be configured for the organization.
+     * The status of the additional configuration that will be configured for the organization. Use one of the following values to configure the feature status for the entire organization:    NEW: Indicates that when a new account joins the organization, they will have the additional configuration enabled automatically.     ALL: Indicates that all accounts in the organization have the additional configuration enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty. It may take up to 24 hours to update the configuration for all the member accounts.    NONE: Indicates that the additional configuration will not be automatically enabled for any account in the organization. The administrator must manage the additional configuration for each account individually.  
      */
     AutoEnable?: OrgFeatureStatus;
   }
@@ -3232,7 +3468,7 @@ declare namespace GuardDuty {
      */
     Name?: OrgFeatureAdditionalConfiguration;
     /**
-     * Describes how The status of the additional configuration that are configured for the member accounts within the organization. If you set AutoEnable to NEW, a feature will be configured for only the new accounts when they join the organization. If you set AutoEnable to NONE, no feature will be configured for the accounts when they join the organization.
+     * Describes the status of the additional configuration that is configured for the member accounts within the organization. One of the following values is the status for the entire organization:    NEW: Indicates that when a new account joins the organization, they will have the additional configuration enabled automatically.     ALL: Indicates that all accounts in the organization have the additional configuration enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty. It may take up to 24 hours to update the configuration for all the member accounts.    NONE: Indicates that the additional configuration will not be automatically enabled for any account in the organization. The administrator must manage the additional configuration for each account individually.  
      */
     AutoEnable?: OrgFeatureStatus;
   }
@@ -3284,7 +3520,7 @@ declare namespace GuardDuty {
      */
     Name?: OrgFeature;
     /**
-     * The status of the feature that will be configured for the organization.
+     * Describes the status of the feature that is configured for the member accounts within the organization. One of the following values is the status for the entire organization:    NEW: Indicates that when a new account joins the organization, they will have the feature enabled automatically.     ALL: Indicates that all accounts in the organization have the feature enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty. It may take up to 24 hours to update the configuration for all the member accounts.    NONE: Indicates that the feature will not be automatically enabled for any account in the organization. The administrator must manage the feature for each account individually.  
      */
     AutoEnable?: OrgFeatureStatus;
     /**
@@ -3298,7 +3534,7 @@ declare namespace GuardDuty {
      */
     Name?: OrgFeature;
     /**
-     * Describes how The status of the feature that are configured for the member accounts within the organization. If you set AutoEnable to NEW, a feature will be configured for only the new accounts when they join the organization. If you set AutoEnable to NONE, no feature will be configured for the accounts when they join the organization.
+     * Describes the status of the feature that is configured for the member accounts within the organization.    NEW: Indicates that when a new account joins the organization, they will have the feature enabled automatically.     ALL: Indicates that all accounts in the organization have the feature enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty.    NONE: Indicates that the feature will not be automatically enabled for any account in the organization. In this case, each account will be managed individually by the administrator.  
      */
     AutoEnable?: OrgFeatureStatus;
     /**
@@ -3486,6 +3722,8 @@ declare namespace GuardDuty {
     ProductType?: String;
   }
   export type ProductCodes = ProductCode[];
+  export type ProfileSubtype = "FREQUENT"|"INFREQUENT"|"UNSEEN"|"RARE"|string;
+  export type ProfileType = "FREQUENCY"|string;
   export interface PublicAccess {
     /**
      * Contains information about how permissions are configured for the S3 bucket.
@@ -3649,7 +3887,7 @@ declare namespace GuardDuty {
     InstanceArn?: InstanceArn;
   }
   export type ResourceList = String[];
-  export type ResourceType = "EKS"|string;
+  export type ResourceType = "EKS"|"ECS"|"EC2"|string;
   export interface RuntimeContext {
     /**
      * Information about the process that modified the current process. This is available for multiple finding types.
@@ -3859,11 +4097,11 @@ declare namespace GuardDuty {
   }
   export interface ScanConditionPair {
     /**
-     * Represents key  in the map condition.
+     * Represents the key in the map condition.
      */
     Key: TagKey;
     /**
-     * Represents optional value  in the map condition. If not specified, only key  will be matched.
+     * Represents optional value in the map condition. If not specified, only the key will be matched.
      */
     Value?: TagValue;
   }
@@ -3975,6 +4213,10 @@ declare namespace GuardDuty {
      * Whether the container is privileged.
      */
     Privileged?: Boolean;
+    /**
+     * Whether or not a container or a Kubernetes pod is allowed to gain more privileges than its parent process.
+     */
+    AllowPrivilegeEscalation?: Boolean;
   }
   export interface SecurityGroup {
     /**
@@ -4044,6 +4286,10 @@ declare namespace GuardDuty {
      * Information about the process and any required context values for a specific finding
      */
     RuntimeDetails?: RuntimeDetails;
+    /**
+     * Contains information about the detected unusual behavior.
+     */
+    Detection?: Detection;
   }
   export interface ServiceAdditionalInfo {
     /**
@@ -4385,7 +4631,7 @@ declare namespace GuardDuty {
      */
     DetectorId: DetectorId;
     /**
-     * Indicates whether to automatically enable member accounts in the organization. Even though this is still supported, we recommend using AutoEnableOrganizationMembers to achieve the similar results.
+     * Represents whether or not to automatically enable member accounts in the organization. Even though this is still supported, we recommend using AutoEnableOrganizationMembers to achieve the similar results. You must provide a value for either autoEnableOrganizationMembers or autoEnable.
      */
     AutoEnable?: Boolean;
     /**
@@ -4397,7 +4643,7 @@ declare namespace GuardDuty {
      */
     Features?: OrganizationFeaturesConfigurations;
     /**
-     * Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.     NEW: Indicates that when a new account joins the organization, they will have GuardDuty enabled automatically.     ALL: Indicates that all accounts in the Amazon Web Services Organization have GuardDuty enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty.    NONE: Indicates that GuardDuty will not be automatically enabled for any accounts in the organization. GuardDuty must be managed for each account individually by the administrator.  
+     * Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization. You must provide a value for either autoEnableOrganizationMembers or autoEnable.  Use one of the following configuration values for autoEnableOrganizationMembers:    NEW: Indicates that when a new account joins the organization, they will have GuardDuty enabled automatically.     ALL: Indicates that all accounts in the organization have GuardDuty enabled automatically. This includes NEW accounts that join the organization and accounts that may have been suspended or removed from the organization in GuardDuty. It may take up to 24 hours to update the configuration for all the member accounts.    NONE: Indicates that GuardDuty will not be automatically enabled for any account in the organization. The administrator must manage GuardDuty for each account in the organization individually.  
      */
     AutoEnableOrganizationMembers?: AutoEnableMembers;
   }
@@ -4483,7 +4729,7 @@ declare namespace GuardDuty {
     Total?: Total;
   }
   export type UsageDataSourceResultList = UsageDataSourceResult[];
-  export type UsageFeature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|string;
+  export type UsageFeature = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_DATA_EVENTS"|"EKS_AUDIT_LOGS"|"EBS_MALWARE_PROTECTION"|"RDS_LOGIN_EVENTS"|"LAMBDA_NETWORK_LOGS"|"EKS_RUNTIME_MONITORING"|"FARGATE_RUNTIME_MONITORING"|"EC2_RUNTIME_MONITORING"|string;
   export type UsageFeatureList = UsageFeature[];
   export interface UsageFeatureResult {
     /**

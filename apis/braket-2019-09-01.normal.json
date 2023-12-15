@@ -438,6 +438,40 @@
       },
       "documentation": "<p>Defines the Amazon Braket job to be created. Specifies the container image the job uses and the paths to the Python scripts used for entry and training.</p>"
     },
+    "Association": {
+      "type": "structure",
+      "required": [
+        "arn",
+        "type"
+      ],
+      "members": {
+        "arn": {
+          "shape": "BraketResourceArn",
+          "documentation": "<p>The Amazon Braket resource arn.</p>"
+        },
+        "type": {
+          "shape": "AssociationType",
+          "documentation": "<p>The association type for the specified Amazon Braket resource arn.</p>"
+        }
+      },
+      "documentation": "<p>The Amazon Braket resource and the association type.</p>"
+    },
+    "AssociationType": {
+      "type": "string",
+      "enum": [
+        "RESERVATION_TIME_WINDOW_ARN"
+      ]
+    },
+    "Associations": {
+      "type": "list",
+      "member": {
+        "shape": "Association"
+      }
+    },
+    "BraketResourceArn": {
+      "type": "string",
+      "pattern": "^arn:aws[a-z\\-]*:braket:[a-z0-9\\-]*:[0-9]{12}:.*$"
+    },
     "CancelJobRequest": {
       "type": "structure",
       "required": [
@@ -549,6 +583,10 @@
           "shape": "AlgorithmSpecification",
           "documentation": "<p>Definition of the Amazon Braket job to be created. Specifies the container image the job uses and information about the Python scripts used for entry and training.</p>"
         },
+        "associations": {
+          "shape": "CreateJobRequestAssociationsList",
+          "documentation": "<p>The list of Amazon Braket resources associated with the hybrid job.</p>"
+        },
         "checkpointConfig": {
           "shape": "JobCheckpointConfig",
           "documentation": "<p>Information about the output locations for job checkpoint data.</p>"
@@ -596,6 +634,14 @@
         }
       }
     },
+    "CreateJobRequestAssociationsList": {
+      "type": "list",
+      "member": {
+        "shape": "Association"
+      },
+      "max": 1,
+      "min": 0
+    },
     "CreateJobRequestInputDataConfigList": {
       "type": "list",
       "member": {
@@ -638,6 +684,10 @@
           "documentation": "<p>The action associated with the task.</p>",
           "jsonvalue": true
         },
+        "associations": {
+          "shape": "CreateQuantumTaskRequestAssociationsList",
+          "documentation": "<p>The list of Amazon Braket resources associated with the quantum task.</p>"
+        },
         "clientToken": {
           "shape": "String64",
           "documentation": "<p>The client token associated with the request.</p>",
@@ -673,6 +723,14 @@
           "documentation": "<p>Tags to be added to the quantum task you're creating.</p>"
         }
       }
+    },
+    "CreateQuantumTaskRequestAssociationsList": {
+      "type": "list",
+      "member": {
+        "shape": "Association"
+      },
+      "max": 1,
+      "min": 0
     },
     "CreateQuantumTaskRequestDeviceParametersString": {
       "type": "string",
@@ -736,6 +794,34 @@
         }
       },
       "documentation": "<p>Configures the quantum processing units (QPUs) or simulator used to create and run an Amazon Braket job.</p>"
+    },
+    "DeviceQueueInfo": {
+      "type": "structure",
+      "required": [
+        "queue",
+        "queueSize"
+      ],
+      "members": {
+        "queue": {
+          "shape": "QueueName",
+          "documentation": "<p>The name of the queue. </p>"
+        },
+        "queuePriority": {
+          "shape": "QueuePriority",
+          "documentation": "<p>Optional. Specifies the priority of the queue. Tasks in a priority queue are processed before the tasks in a normal queue.</p>"
+        },
+        "queueSize": {
+          "shape": "String",
+          "documentation": "<p>The number of jobs or tasks in the queue for a given device. </p>"
+        }
+      },
+      "documentation": "<p>Information about tasks and jobs queued on a device.</p>"
+    },
+    "DeviceQueueInfoList": {
+      "type": "list",
+      "member": {
+        "shape": "DeviceQueueInfo"
+      }
     },
     "DeviceStatus": {
       "type": "string",
@@ -829,6 +915,10 @@
           "shape": "String",
           "documentation": "<p>The name of the device.</p>"
         },
+        "deviceQueueInfo": {
+          "shape": "DeviceQueueInfoList",
+          "documentation": "<p>List of information about tasks and jobs queued on a device.</p>"
+        },
         "deviceStatus": {
           "shape": "DeviceStatus",
           "documentation": "<p>The status of the device.</p>"
@@ -849,6 +939,12 @@
         "jobArn"
       ],
       "members": {
+        "additionalAttributeNames": {
+          "shape": "HybridJobAdditionalAttributeNamesList",
+          "documentation": "<p>A list of attributes to return information for.</p>",
+          "location": "querystring",
+          "locationName": "additionalAttributeNames"
+        },
         "jobArn": {
           "shape": "JobArn",
           "documentation": "<p>The ARN of the job to retrieve.</p>",
@@ -873,6 +969,10 @@
         "algorithmSpecification": {
           "shape": "AlgorithmSpecification",
           "documentation": "<p>Definition of the Amazon Braket job created. Specifies the container image the job uses, information about the Python scripts used for entry and training, and the user-defined metrics used to evaluation the job.</p>"
+        },
+        "associations": {
+          "shape": "Associations",
+          "documentation": "<p>The list of Amazon Braket resources associated with the hybrid job.</p>"
         },
         "billableDuration": {
           "shape": "Integer",
@@ -926,6 +1026,10 @@
           "shape": "JobOutputDataConfig",
           "documentation": "<p>The path to the S3 location where job artifacts are stored and the encryption key used to store them there.</p>"
         },
+        "queueInfo": {
+          "shape": "HybridJobQueueInfo",
+          "documentation": "<p>Queue information for the requested job. Only returned if <code>QueueInfo</code> is specified in the <code>additionalAttributeNames\"</code> field in the <code>GetJob</code> API request.</p>"
+        },
         "roleArn": {
           "shape": "RoleArn",
           "documentation": "<p>The Amazon Resource Name (ARN) of an IAM role that Amazon Braket can assume to perform tasks on behalf of a user. It can access user resources, run an Amazon Braket job container on behalf of user, and output resources to the s3 buckets of a user.</p>"
@@ -960,9 +1064,15 @@
         "quantumTaskArn"
       ],
       "members": {
+        "additionalAttributeNames": {
+          "shape": "QuantumTaskAdditionalAttributeNamesList",
+          "documentation": "<p>A list of attributes to return information for.</p>",
+          "location": "querystring",
+          "locationName": "additionalAttributeNames"
+        },
         "quantumTaskArn": {
           "shape": "QuantumTaskArn",
-          "documentation": "<p>the ARN of the task to retrieve.</p>",
+          "documentation": "<p>The ARN of the task to retrieve.</p>",
           "location": "uri",
           "locationName": "quantumTaskArn"
         }
@@ -981,6 +1091,10 @@
         "status"
       ],
       "members": {
+        "associations": {
+          "shape": "Associations",
+          "documentation": "<p>The list of Amazon Braket resources associated with the quantum task.</p>"
+        },
         "createdAt": {
           "shape": "SyntheticTimestamp_date_time",
           "documentation": "<p>The time at which the task was created.</p>"
@@ -1018,6 +1132,10 @@
           "shape": "QuantumTaskArn",
           "documentation": "<p>The ARN of the task.</p>"
         },
+        "queueInfo": {
+          "shape": "QuantumTaskQueueInfo",
+          "documentation": "<p>Queue information for the requested quantum task. Only returned if <code>QueueInfo</code> is specified in the <code>additionalAttributeNames\"</code> field in the <code>GetQuantumTask</code> API request.</p>"
+        },
         "shots": {
           "shape": "Long",
           "documentation": "<p>The number of shots used in the task.</p>"
@@ -1031,6 +1149,40 @@
           "documentation": "<p>The tags that belong to this task.</p>"
         }
       }
+    },
+    "HybridJobAdditionalAttributeName": {
+      "type": "string",
+      "enum": [
+        "QueueInfo"
+      ]
+    },
+    "HybridJobAdditionalAttributeNamesList": {
+      "type": "list",
+      "member": {
+        "shape": "HybridJobAdditionalAttributeName"
+      }
+    },
+    "HybridJobQueueInfo": {
+      "type": "structure",
+      "required": [
+        "position",
+        "queue"
+      ],
+      "members": {
+        "message": {
+          "shape": "String",
+          "documentation": "<p>Optional. Provides more information about the queue position. For example, if the job is complete and no longer in the queue, the message field contains that information.</p>"
+        },
+        "position": {
+          "shape": "String",
+          "documentation": "<p>Current position of the job in the jobs queue.</p>"
+        },
+        "queue": {
+          "shape": "QueueName",
+          "documentation": "<p>The name of the queue.</p>"
+        }
+      },
+      "documentation": "<p>Information about the queue for a specified job.</p>"
     },
     "HyperParameters": {
       "type": "map",
@@ -1046,7 +1198,8 @@
     "HyperParametersValueString": {
       "type": "string",
       "max": 2500,
-      "min": 1
+      "min": 1,
+      "pattern": "^.*$"
     },
     "InputConfigList": {
       "type": "list",
@@ -1196,7 +1349,7 @@
         },
         "timeOfEvent": {
           "shape": "SyntheticTimestamp_date_time",
-          "documentation": "<p>TThe type of event that occurred related to the Amazon Braket job.</p>"
+          "documentation": "<p>The type of event that occurred related to the Amazon Braket job.</p>"
         }
       },
       "documentation": "<p>Details about the type and time events occurred related to the Amazon Braket job.</p>"
@@ -1360,10 +1513,48 @@
       "type": "long",
       "box": true
     },
+    "QuantumTaskAdditionalAttributeName": {
+      "type": "string",
+      "enum": [
+        "QueueInfo"
+      ]
+    },
+    "QuantumTaskAdditionalAttributeNamesList": {
+      "type": "list",
+      "member": {
+        "shape": "QuantumTaskAdditionalAttributeName"
+      }
+    },
     "QuantumTaskArn": {
       "type": "string",
       "max": 256,
-      "min": 1
+      "min": 0
+    },
+    "QuantumTaskQueueInfo": {
+      "type": "structure",
+      "required": [
+        "position",
+        "queue"
+      ],
+      "members": {
+        "message": {
+          "shape": "String",
+          "documentation": "<p>Optional. Provides more information about the queue position. For example, if the task is complete and no longer in the queue, the message field contains that information.</p>"
+        },
+        "position": {
+          "shape": "String",
+          "documentation": "<p>Current position of the task in the quantum tasks queue.</p>"
+        },
+        "queue": {
+          "shape": "QueueName",
+          "documentation": "<p>The name of the queue. </p>"
+        },
+        "queuePriority": {
+          "shape": "QueuePriority",
+          "documentation": "<p>Optional. Specifies the priority of the queue. Quantum tasks in a priority queue are processed before the tasks in a normal queue.</p>"
+        }
+      },
+      "documentation": "<p>Information about the queue for the specified quantum task.</p>"
     },
     "QuantumTaskStatus": {
       "type": "string",
@@ -1433,6 +1624,20 @@
       "member": {
         "shape": "QuantumTaskSummary"
       }
+    },
+    "QueueName": {
+      "type": "string",
+      "enum": [
+        "QUANTUM_TASKS_QUEUE",
+        "JOBS_QUEUE"
+      ]
+    },
+    "QueuePriority": {
+      "type": "string",
+      "enum": [
+        "Normal",
+        "Priority"
+      ]
     },
     "RoleArn": {
       "type": "string",

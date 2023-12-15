@@ -7,9 +7,7 @@ var AWS = require('../index');
 var license = [
   '// AWS SDK for JavaScript v' + AWS.VERSION,
   '// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.',
-  '// Modifications Copyright Ian Mckay (https://github.com/iann0036/aws-sdk-serviceworker).',
-  '// License at https://sdk.amazonaws.com/js/BUNDLE_LICENSE.txt',
-  'if(!window){var window = {}};'
+  '// License at https://sdk.amazonaws.com/js/BUNDLE_LICENSE.txt'
 ].join('\n') + '\n';
 
 function minify(code) {
